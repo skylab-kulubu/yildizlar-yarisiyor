@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import ytumLogo from "../images/ytumklogo.png";
 import turkIcon from "../images/turk.png";
 import engIcon from "../images/ing.png";
@@ -7,6 +8,8 @@ import modGunduz from "../images/mod-gunduz.png";
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -17,9 +20,30 @@ const Navbar = () => {
     }
   };
 
+  const handleScrollOrRedirect = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
+  };
+
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const elementBottom = element.getBoundingClientRect().bottom; 
+      const offset = window.scrollY + elementBottom - window.innerHeight; 
+      window.scrollTo({ top: offset, behavior: "smooth" }); 
+    }
+  };
+
+  const navigateToForm = () => {
+    navigate("/form");
+  };
+
   return (
-    <nav className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white">
-      <div className="container mx-auto flex items-center justify-between py-8 px-32">
+    <nav className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white sticky top-0 z-50">
+      <div className="container mx-auto flex items-center justify-between py-8 px-32 border-b border-light-accentpurple">
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <img
@@ -35,44 +59,44 @@ const Navbar = () => {
         {/* Menü */}
         <ul className="flex items-center space-x-6">
           <li>
-            <a
-              href="#anasayfa"
+            <button
+              onClick={handleScrollOrRedirect}
               className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
             >
               Ana Sayfa
-            </a>
+            </button>
           </li>
           <li>
-            <a
-              href="#kategoriler"
+            <button
+              onClick={() => handleScroll("kategoriler")}
               className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
             >
               Kategoriler
-            </a>
+            </button>
           </li>
           <li>
-            <a
-              href="#juri"
+            <button
+              onClick={() => handleScroll("juri")}
               className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
             >
               Jüri Üyeleri
-            </a>
+            </button>
           </li>
           <li>
-            <a
-              href="#sponsorlar"
+            <button
+              onClick={() => handleScroll("sponsorlar")}
               className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
             >
               Sponsorlarımız
-            </a>
+            </button>
           </li>
           <li>
-            <a
-              href="#katilimformu"
+            <button
+              onClick={navigateToForm}
               className="hover:text-dark-accentpurple transition"
             >
               Katılım Formu
-            </a>
+            </button>
           </li>
         </ul>
 

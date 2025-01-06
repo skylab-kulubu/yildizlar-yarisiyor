@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 body {
   @apply bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white;
+  font-family: 'Outfit', sans-serif;
 }
