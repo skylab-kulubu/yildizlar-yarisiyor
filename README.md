@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# Yıldızlar Yarışıyor '24 Web Uygulaması
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bu proje, Yıldız Teknik Üniversitesi Müzik Kulübü (YTÜMK) tarafından düzenlenen "Yıldızlar Yarışıyor '24" etkinliği için SkyLab - WebLab ekibi tarafından geliştirilmiştir. Uygulama, katılımcılara ödül kategorileri, jüri üyeleri ve sponsorlar hakkında bilgi sunar. Ayrıca bir katılım formu sayfası içerir.
 
-## Available Scripts
+## 🚀 Proje Özellikleri
 
-In the project directory, you can run:
+- **ReactJS** ve **Tailwind CSS** kullanılarak geliştirildi.
+- Açık/Koyu mod desteği.
+- Bölümlere yumuşak kaydırma ve yönlendirme.
+- "Katılım Formu" için ayrı bir sayfa.
+- Modern ve kullanıcı dostu arayüz.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🗂️ Dosya Yapısı
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```plaintext
+src/
+├── components/
+│   ├── sections/
+│   │   ├── Hero.js               # Ana sayfa giriş bölümü
+│   │   ├── CategorySection.js    # Ödül kategorileri bölümü
+│   │   ├── JurySection.js        # Jüri üyeleri bölümü
+│   │   ├── SponsorSection.js     # Sponsorlar bölümü
+│   ├── Footer.js                 # Sayfa alt bölümü
+│   ├── Header.js                 # Sayfa üst navigasyonu (Navbar)
+├── images/                       # Görseller ve ikonlar
+│   ├── cross.png                 # Sponsor logosu
+│   ├── discord.png               # Discord ikonu
+│   ├── ing.png                   # İngilizce bayrak ikonu
+│   ├── insta.png                 # Instagram ikonu
+│   ├── konusmaci.png             # Jüri placeholder görseli
+│   ├── linkedin.png              # LinkedIn ikonu
+│   ├── mod-gece.png              # Koyu mod ikonu
+│   ├── mod-gunduz.png            # Açık mod ikonu
+│   ├── turk.png                  # Türkçe bayrak ikonu
+│   ├── x.png                     # X (Twitter) ikonu
+│   ├── ytumklogo.png             # YTÜMK logo
+├── pages/
+│   ├── Form.js                   # Katılım formu sayfası
+│   ├── Home.js                   # Ana sayfa bileşeni
+├── App.js                        # Ana uygulama dosyası
+├── index.css                     # Ana CSS konfigürasyonu
+```
+---
 
-### `npm test`
+## 🌟 Bölümler
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   - Hero (Giriş Bölümü)
+     - Uygulamanın ilk ekranında etkinlik hakkında kısa bilgi ve görsel yer alır.
 
-### `npm run build`
+   - Kategori Bölümü
+     - "Beste Kategorisi" ve "Cover Kategorisi" gibi ödül kategorilerini içerir.
+     - Bireysel ve grup performans alt kategorileri tanıtılır.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   - Jüri Bölümü
+     - Jüri üyelerinin placeholder görselleri ve isimleri listelenir.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   - Sponsorlar Bölümü
+     - Ana sponsor ve diğer sponsorların logoları görüntülenir.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - Katılım Formu Sayfası
+     - Kullanıcıların etkinliğe katılmak için bilgilerini doldurabileceği bir form içerir.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙️ Teknolojiler ve Araçlar
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  * ReactJS: Kullanıcı arayüzü için.
+  * Tailwind CSS: Hızlı ve özelleştirilebilir CSS framework.
+  * React Router: Sayfa yönlendirme için.
+  * JavaScript (ES6): Dinamik işlevler için.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📜 Kurulum ve Çalıştırma
 
-## Learn More
+### 1. Depoyu klonlayın:
+```plaintext
+git clone https://github.com/skylab-kulubu/yildizlar-yarisiyor.git cd Yildizlar-Yarisiyor
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 2. Bağımlılıkları yükleyin:
+```plaintext
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3. Uygulamayı başlatın:
+```plaintext
+npm start
+```
 
-### Code Splitting
+Tarayıcınızda http://localhost:3000 adresini açarak uygulamayı görüntüleyebilirsiniz.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🌈 Kullanıcı Deneyimi
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  * Açık/Koyu Mod: Kullanıcılar mod arasında geçiş yapabilir.
+  * Bölümlere Yumuşak Kaydırma: Ana sayfadaki bölümlere tıklayarak yumuşak geçiş yapılır.
+  * Katılım Formu: "Katılım Formu" düğmesine tıklayarak form sayfasına yönlendirilirsiniz.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# SKY LAB: Yıldız Teknik Üniversitesi Bilgisayar Bilimleri Kulübü - WEBLAB
