@@ -41,6 +41,14 @@ const Navbar = () => {
     navigate("/form");
   };
 
+  const [language, setLanguage] = useState('tr'); // Default language is Turkish
+
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    // Optionally, you can also store the selected language in localStorage
+    localStorage.setItem('language', lang);
+  };
+
   return (
     <nav className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between py-8 px-32 border-b border-light-accentpurple">
@@ -63,7 +71,7 @@ const Navbar = () => {
               onClick={handleScrollOrRedirect}
               className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
             >
-              Ana Sayfa
+              {language === 'tr' ? <p>Ana Sayfa</p> : <p>Home Page</p>}
             </button>
           </li>
           <li>
@@ -108,11 +116,13 @@ const Navbar = () => {
               src={turkIcon}
               alt="Türkçe"
               className="w-[42px] h-[28px] rounded-full cursor-pointer"
+              onClick={() => handleLanguageChange('tr')}
             />
             <img
               src={engIcon}
               alt="İngilizce"
               className="w-[42px] h-[28px] rounded-full cursor-pointer"
+              onClick={() => handleLanguageChange('en')}
             />
           </div>
 
