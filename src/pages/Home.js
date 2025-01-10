@@ -10,12 +10,24 @@ const Home = () => {
       <section id="anasayfa">
         <Hero />
       </section>
+      <div class="py-10">
+      </div>
       <section id="kategoriler">
         <CategorySection />
       </section>
+      <div class="flex items-center justify-center py-20">
+        <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
+        <div class="flex-1 h-px bg-purple-600"></div>
+        <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
+      </div>
       <section id="juri">
         <JurySection />
       </section>
+      <div class="flex items-center justify-center py-20">
+        <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
+        <div class="flex-1 h-px bg-purple-600"></div>
+        <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
+      </div>
       <section id="sponsorlar">
         <SponsorSection />
       </section>
