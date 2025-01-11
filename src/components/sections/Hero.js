@@ -3,7 +3,7 @@ import konserImage from "../../images/konser.jpg";
 
 const Hero = () => {
   return (
-    <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white h-[calc(100vh-104px)] flex justify-center items-center">
+    <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white flex justify-center items-center">
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-8">
         <img
           src={konserImage}
