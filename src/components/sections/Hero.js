@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="text-center md:text-left w-1/2 p-4">
           <h1 className="text-4xl font-bold mb-4">Yıldızlar Yarışıyor ‘24</h1>
           <p className="">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dui mauris, dignissim vel enim nec, auctor venenatis sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dui mauris, dignissim vel enim nec, auctor venenatis sem. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            Yıldızlar Yarışıyor, kulübümüzün 2013 senesinden beri gerçekleştirdiği gelenekselleşmiş etkinliklerinden biridir. Türkiye’nin her bir yanındaki üniversitelerden katılan müzik gruplarına bu etkinlik sayesinde sahne alma fırsatı tanıyoruz. Yarışmacılar, performansları ardından alanında uzman sanatçılardan oluşan jüriler tarafından değerlendirilir. Bu değerlendirme sonucunda kazanan yarışmacılara müzik kariyerlerini ilerletmeleri adına ödüller verilir.
           </p>
         </div>
       </div>

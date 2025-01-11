@@ -199,20 +199,19 @@ const ParticipationForm = () => {
             Okuduğunuz Üniversite <span className="text-form-red">*</span>
           </label>
           <select
-            name="university_id"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
-            value={formData.university_id}
-            onChange={handleInputChange}
-            required
-          >
-            <option value="">Üniversite Seçiniz</option>
-            {universities.map((uni) => (
-              <option key={uni.id} value={uni.id}>
-                {uni.university}
-              </option>
-            ))}
-          </select>
+  name="university_id"
+  className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple rounded"
+  value={formData.university_id}
+  onChange={handleInputChange}
+  required
+>
+  <option value="">Üniversite Seçiniz</option>
+  {universities.map((uni) => (
+    <option key={uni.id} value={uni.id}>
+      {uni.university}
+    </option>
+  ))}
+</select>
         </div>
 
         {/* Email */}
@@ -419,7 +418,7 @@ const ParticipationForm = () => {
 
         {/* Ses Kaydı (file) */}
         <div className="mb-6">
-          <label className="block font-semibold mb-1">
+          <label className="block font-semibold mb-4">
             Yarışmaya Katılmak İstediğiniz Performansınıza Ait Ses Kaydını Yükleyiniz
             <span className="text-form-red">*</span>
           </label>

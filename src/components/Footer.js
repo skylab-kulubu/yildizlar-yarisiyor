@@ -8,23 +8,20 @@ import crossLogo from "../images/cross.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-10 px-32 border-b-8 border-dark-accentpurple">
+    <footer className="bg-black text-white py-4 px-32 border-b-8 border-dark-accentpurple">
       <div className="container mx-auto flex w-full justify-between items-center">
         {/* Sol - Sosyal Medya */}
         <div className="flex flex-col items-center justify-center">
           <p className="text-dark-accentpurple font-bold mb-4 text-2xl">Bizi Takip Edin</p>
-          <div className="grid grid-cols-2 gap-8">
-            <a href="instagram.com" className="w-12 h-12 flex items-center justify-center rounded">
+          <div className="grid grid-cols-3 gap-8">
+            <a href="https://www.instagram.com/ytumk?igsh=eWZoeDFuZmYzM2Zl" className="w-12 h-12 flex items-center justify-center rounded">
               <img src={instaIcon} alt="Instagram" className="w-12 h-12" />
             </a>
-            <a href="linkedin.com" className="w-12 h-12 flex items-center justify-center rounded">
+            <a href="https://www.linkedin.com/company/ytumk/" className="w-12 h-12 flex items-center justify-center rounded">
               <img src={linkedinIcon} alt="LinkedIn" className="w-12 h-12" />
             </a>
-            <a href="x.com" className="w-12 h-12 flex items-center justify-center rounded">
+            <a href="https://x.com/ytumk" className="w-12 h-12 flex items-center justify-center rounded">
               <img src={xIcon} alt="X" className="w-12 h-12" />
-            </a>
-            <a href="discord.com" className="w-12 h-12 flex items-center justify-center rounded">
-              <img src={discordIcon} alt="Discord" className="w-12 h-12" />
             </a>
           </div>
         </div>

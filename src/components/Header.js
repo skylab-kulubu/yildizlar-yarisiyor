@@ -1,15 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ytumLogo from "../images/ytumklogo.png";
 import turkIcon from "../images/turk.png";
 import engIcon from "../images/ing.png";
 import modGece from "../images/mod-gece.png";
 import modGunduz from "../images/mod-gunduz.png";
+import axios from "axios"; // Optional: If you prefer to use axios
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [logo, setLogo] = useState(""); // Add state for logo
+  const [title, setTitle] = useState(""); // Add state for title
+
+  useEffect(() => {
+    // Fetch data from the API
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://api.ytumk.com.tr/v1/exapi/event/c7165832-1fad-48bc-9219-dd12e8cd2ec0");
+        setLogo(response.data.image_url); // Assuming the API response has a 'logo' field
+        setTitle(response.data.name); // Assuming the API response has a 'title' field
+        console.log("Fetched title:", response.data.title); // Print the title in the terminal
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -29,11 +49,13 @@ const Navbar = () => {
   };
 
   const handleScroll = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const elementBottom = element.getBoundingClientRect().bottom; 
-      const offset = window.scrollY + elementBottom - window.innerHeight; 
-      window.scrollTo({ top: offset, behavior: "smooth" }); 
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: id } });
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -55,13 +77,12 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <img
-            src={ytumLogo}
+            src={logo}
             alt="Yıldız Teknik Üniversitesi Logo"
-            className={`w-10 h-10 transition duration-300 ${
-              darkMode ? "filter invert-0" : "filter invert"
-            }`}
+            className={`w-16 h-auto transition duration-300 ${darkMode ? "filter invert-0" : "filter invert"
+              }`}
           />
-          <span className="font-bold text-lg">YILDIZLAR YARIŞIYOR</span>
+          <span className="font-bold text-lg">{title}</span>
         </div>
 
         {/* Menü */}
