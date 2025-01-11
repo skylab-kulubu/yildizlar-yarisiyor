@@ -91,9 +91,6 @@ const CategorySection = () => {
             </div>
           </div>
         </div>
-
-        {/* Alt taraftaki mor çizgi */}
-        <div className="mt-12 mx-auto w-1/2 h-[2px] bg-dark-accentpurple"></div>
       </div>
     </section>
   );
