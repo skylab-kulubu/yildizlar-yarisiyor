@@ -33,7 +33,7 @@ const JurySection = () => {
   return (
     <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white py-12 md:py-16">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6">Jüri Üyelerimiz</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Jüri Üyelerimiz</h2>
 
         {/* Üstte 3'lük grid */}
         <div className="grid grid-cols-3 gap-6 mb-8 place-items-center">

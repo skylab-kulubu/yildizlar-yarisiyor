@@ -29,9 +29,9 @@ const SponsorSection = () => {
   return (
     <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white py-12 md:py-16">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6">Sponsorlarımız</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Sponsorlarımız</h2>
         <p className="text-2xl mb-4">Ana Sponsorumuz</p>
-        <div className="flex justify-center gap-8 flex-wrap">
+        <div className="flex justify-center gap-16 flex-wrap">
           {sponsors.map((sponsor) => (
             <div
               key={sponsor.id}

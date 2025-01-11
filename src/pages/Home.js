@@ -7,7 +7,6 @@ import SponsorSection from "../components/sections/SponsorSection";
 const Home = () => {
   return (
     <div className="px-32">
-      <div class="py-10"></div>
       <section id="anasayfa">
         <Hero />
       </section>
