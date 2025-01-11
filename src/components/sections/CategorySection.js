@@ -2,38 +2,91 @@ import React from "react";
 
 const CategorySection = () => {
   return (
-    <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white flex justify-center items-center">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6">Ödül Kategorileri</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-          <div>
-            <h3 className="text-2xl font-semibold mb-4 text-right">Beste Kategorisi</h3>
-            <p className="text-right">
+    <section
+      className="
+        bg-light-bgcolor
+        dark:bg-dark-bgcolor
+        text-light-black
+        dark:text-dark-white
+        py-12
+        md:py-16
+      "
+    >
+      <div className="container mx-auto px-4">
+        {/* ÖDÜL KATEGORİLERİ BAŞLIĞI */}
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          Ödül Kategorileri
+        </h2>
+
+        {/* Üst Kategoriler: Beste / Cover */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            gap-8
+            md:gap-16
+            max-w-4xl
+            mx-auto
+          "
+        >
+          {/* Sol kolon (md'den itibaren text-right) */}
+          <div className="text-center md:text-right">
+            <h3 className="text-2xl font-semibold mb-3">Beste Kategorisi</h3>
+            <p className="leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dui mauris, dignissim vel enim nec, auctor venenatis sem.
+              dui mauris, dignissim vel enim nec, auctor venenatis sem. Interdum
+              et malesuada fames ac ante ipsum primis in faucibus
             </p>
           </div>
-          <div>
-            <h3 className="text-2xl font-semibold mb-4 text-left">Cover Kategorisi</h3>
-            <p className="text-left">
+
+          {/* Sağ kolon (md'den itibaren text-left) */}
+          <div className="text-center md:text-left">
+            <h3 className="text-2xl font-semibold mb-3">Cover Kategorisi</h3>
+            <p className="leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dui mauris, dignissim vel enim nec, auctor venenatis sem.
+              dui mauris, dignissim vel enim nec, auctor venenatis sem. Interdum
+              et malesuada fames ac ante ipsum primis in faucibus
             </p>
           </div>
         </div>
+
+        {/* ALT KATEGORİLER */}
         <div className="mt-10">
-          <h2 className="text-3xl font-bold mb-6 ">Alt Kategoriler</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <div>
-              <h3 className="text-2xl font-semibold mb-4 text-right">Bireysel Performans</h3>
-              <p className="text-right">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 ">
+            Alt Kategoriler
+          </h2>
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              md:grid-cols-2
+              gap-8
+              md:gap-16
+              max-w-4xl
+              mx-auto
+            "
+          >
+            {/* Sol kolon (md'den itibaren text-right) */}
+            <div className="text-center md:text-right">
+              <h3 className="text-2xl font-semibold mb-3 ">
+                Bireysel Performans
+              </h3>
+              <p className="leading-relaxed ">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                dui mauris, dignissim vel enim nec, auctor venenatis sem.
+                Interdum et malesuada fames ac ante ipsum primis in faucibus
               </p>
             </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-4 text-left">Grup Performansı</h3>
-              <p className="text-left">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+            {/* Sağ kolon (md'den itibaren text-left) */}
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-semibold mb-3 ">Grup Performansı</h3>
+              <p className="leading-relaxed ">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                dui mauris, dignissim vel enim nec, auctor venenatis sem.
+                Interdum et malesuada fames ac ante ipsum primis in faucibus
               </p>
             </div>
           </div>
