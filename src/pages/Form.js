@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
-// Eğer fontawesome simge kullanacaksanız (faCirclePlus vb.),
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 const ParticipationForm = () => {
   const [universities, setUniversities] = useState([]);
   const [audioFile, setAudioFile] = useState(null);
   const [fileName, setFileName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState("");
 
   // Form alanları
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     email: "",
     phone_number: "",
     university_id: "",
-    // Varsayılan kategori "COVER" ya da "ORIGINAL"
     category: "COVER",
     bands_name: "",
     song_name: "",
@@ -25,18 +23,17 @@ const ParticipationForm = () => {
     members: [{ name: "", university_id: "", instrument: "" }],
     termsAccepted: false,
     agreementAccepted: false,
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   // Üniversite listesini sayfa yüklenince çekiyoruz
   useEffect(() => {
     const fetchUniversities = async () => {
       try {
         const response = await fetch("https://api.ytumk.com.tr/v1/exapi/universities");
-        if (!response.ok) {
-          throw new Error("Üniversiteler yüklenirken hata oluştu.");
-        }
+        if (!response.ok) throw new Error("Üniversiteler yüklenirken hata oluştu.");
         const data = await response.json();
-        // [{ id: "uuid", university: "Yıldız Teknik Üniversitesi" }, ...]
         setUniversities(data);
       } catch (error) {
         console.error(error);
@@ -66,27 +63,41 @@ const ParticipationForm = () => {
     }));
   };
 
-  // Grup üyeleri form alan değişikliği
-  const handleMemberChange = (index, field, value) => {
-    const updated = [...formData.members];
-    updated[index][field] = value;
-    setFormData((prev) => ({ ...prev, members: updated }));
+  // Dinamik olarak son grup üyesini silme
+  const handleDeleteMember = () => {
+    if (formData.members.length > 1) {
+      setFormData((prev) => ({
+        ...prev,
+        members: prev.members.slice(0, -1),
+      }));
+    }
   };
 
-  // CheckBox değişikliği (Katılım koşulları, sözleşme vb.)
+  // Grup üyeleri form alan değişikliği
+  const handleMemberChange = (index, field, value) => {
+    const updatedMembers = formData.members.map((member, i) =>
+      i === index ? { ...member, [field]: value } : member
+    );
+    setFormData((prev) => ({ ...prev, members: updatedMembers }));
+  };
+
+  // Checkbox değişikliklerini yakalayan fonksiyon
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
     setFormData((prev) => ({ ...prev, [name]: checked }));
   };
 
-  // Kategori butonlarına tıklayınca
+  // Kategori seçimini yakalayan fonksiyon
   const setCategory = (cat) => {
     setFormData((prev) => ({ ...prev, category: cat }));
   };
 
-  // Form gönderme işlemi
+  // Form gönderme fonksiyonu
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmissionStatus("");
+
     try {
       // Gönderilecek json
       const formObject = {
@@ -108,7 +119,6 @@ const ParticipationForm = () => {
         about_2: formData.about_2, // Grup hakkında
       };
 
-      // multipart/form-data
       const data = new FormData();
       if (audioFile) data.append("file", audioFile);
       data.append("form", JSON.stringify(formObject));
@@ -121,14 +131,19 @@ const ParticipationForm = () => {
       if (!response.ok) {
         const errMsg = await response.text();
         console.error("Sunucu hatası:", errMsg);
-        alert("Başvuru gönderilirken bir hata oluştu.");
+        setSubmissionStatus("Başvuru gönderilirken bir hata oluştu, bir daha gönderiniz");
         return;
       }
-      alert("Başvurunuz başarıyla gönderildi!");
-      // Burada isterseniz formu resetleyebilirsiniz
+
+      setSubmissionStatus("Başvuru başarıyla gönderildi");
+      setFormData(initialFormData);
+      setAudioFile(null);
+      setFileName("");
     } catch (error) {
       console.error("Submission failed:", error);
-      alert("Başvuru gönderilirken bir hata oluştu.");
+      setSubmissionStatus("Başvuru gönderilirken bir hata oluştu, bir daha gönderiniz");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -139,32 +154,19 @@ const ParticipationForm = () => {
         Lütfen yarışmaya katılmak istediğiniz kategoriyi seçiniz.
       </h2>
 
-      {/* Kategori Butonları */}
+      {/* Kategori Seçim Butonları */}
       <div className="mb-6 flex space-x-4">
         <button
           type="button"
           onClick={() => setCategory("ORIGINAL")}
-          className={`px-4 py-2 rounded border-2 transition
-            ${
-              formData.category === "ORIGINAL"
-                ? "bg-dark-accentpurple border-dark-accentpurple dark:text-dark-white"
-                : "bg-transparent border-form-gray-dark dark:text-form-text-dark"
-            }
-            hover:opacity-80`}
+          className={`px-4 py-2 rounded border-2 transition ${formData.category === "ORIGINAL" ? "bg-dark-accentpurple border-dark-accentpurple dark:text-dark-white" : "bg-transparent border-form-gray-dark dark:text-form-text-dark"} hover:opacity-80`}
         >
           Beste Kategorisi
         </button>
-
         <button
           type="button"
           onClick={() => setCategory("COVER")}
-          className={`px-4 py-2 rounded border-2 transition
-            ${
-              formData.category === "COVER"
-                ? "bg-dark-accentpurple border-dark-accentpurple dark:text-dark-white"
-                : "bg-transparent border-form-gray-dark dark:text-form-text-dark"
-            }
-            hover:opacity-80`}
+          className={`px-4 py-2 rounded border-2 transition ${formData.category === "COVER" ? "bg-dark-accentpurple border-dark-accentpurple dark:text-dark-white" : "bg-transparent border-form-gray-dark dark:text-form-text-dark"} hover:opacity-80`}
         >
           Cover Kategorisi
         </button>
@@ -175,9 +177,10 @@ const ParticipationForm = () => {
         <span className="text-form-red font-bold">*</span> Zorunlu Soruyu Belirtir
       </p>
 
-      {/* Form */}
+      {/* Form Alanları */}
       <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-transparent">
-        {/* Adınız Soyadınız */}
+        
+        {/* Ad Soyad */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
             Adınız Soyadınız <span className="text-form-red">*</span>
@@ -185,36 +188,35 @@ const ParticipationForm = () => {
           <input
             type="text"
             name="name"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.name}
             onChange={handleInputChange}
             required
           />
         </div>
 
-        {/* Üniversite */}
+        {/* Okuduğunuz Üniversite */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
             Okuduğunuz Üniversite <span className="text-form-red">*</span>
           </label>
           <select
-  name="university_id"
-  className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple rounded"
-  value={formData.university_id}
-  onChange={handleInputChange}
-  required
->
-  <option value="">Üniversite Seçiniz</option>
-  {universities.map((uni) => (
-    <option key={uni.id} value={uni.id}>
-      {uni.university}
-    </option>
-  ))}
-</select>
+            name="university_id"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple rounded"
+            value={formData.university_id}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Üniversite Seçiniz</option>
+            {universities.map((uni) => (
+              <option key={uni.id} value={uni.id}>
+                {uni.university}
+              </option>
+            ))}
+          </select>
         </div>
 
-        {/* Email */}
+        {/* e-Mail Adresi */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
             e-Mail Adresiniz <span className="text-form-red">*</span>
@@ -222,15 +224,14 @@ const ParticipationForm = () => {
           <input
             type="email"
             name="email"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.email}
             onChange={handleInputChange}
             required
           />
         </div>
 
-        {/* Telefon */}
+        {/* Telefon Numarası */}
         <div className="mb-2">
           <label className="block font-semibold mb-1">
             Telefon Numaranız <span className="text-form-red">*</span>
@@ -238,20 +239,19 @@ const ParticipationForm = () => {
           <input
             type="tel"
             name="phone_number"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.phone_number}
             onChange={handleInputChange}
             required
           />
         </div>
 
-        {/* Küçük bilgilendirme metni */}
+        {/* Başvuru Bilgilendirme */}
         <p className="text-xs text-form-gray-light mb-4">
           Başvurular incelendikten sonra verdiğiniz iletişim bilgileri üzerinden iletişime geçilir.
         </p>
 
-        {/* Grup Adı */}
+        {/* Grup Bilgileri */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
             Grubunuzun Adı <span className="text-form-red">*</span>
@@ -259,15 +259,14 @@ const ParticipationForm = () => {
           <input
             type="text"
             name="bands_name"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.bands_name}
             onChange={handleInputChange}
             required
           />
         </div>
 
-        {/* Şarkı İsmi */}
+        {/* Şarkı Adı */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
             Şarkınızın Adı <span className="text-form-red">*</span>
@@ -275,8 +274,7 @@ const ParticipationForm = () => {
           <input
             type="text"
             name="song_name"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.song_name}
             onChange={handleInputChange}
             required
@@ -285,30 +283,24 @@ const ParticipationForm = () => {
 
         {/* Grup Üyeleri */}
         <div className="mb-2 font-semibold">
-          Grup Üyelerinin Ad Soyadları, Okudukları Üniversiteler ve Çaldıkları
-          Enstrümanlar <span className="text-form-red">*</span>
+          Grup Üyelerinin Ad Soyadları, Okudukları Üniversiteler ve Çaldıkları Enstrümanlar <span className="text-form-red">*</span>
         </div>
+
+        {/* Dinamik olarak grup üyesi form alanları */}
         {formData.members.map((member, index) => (
           <div key={index} className="flex flex-wrap gap-2 mb-4">
-            {/* Ad Soyad */}
             <input
               type="text"
               placeholder="Ad Soyad"
-              className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark
-                border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+              className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
               value={member.name}
               onChange={(e) => handleMemberChange(index, "name", e.target.value)}
               required
             />
-
-            {/* Üniversite */}
             <select
-              className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark
-                border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+              className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
               value={member.university_id}
-              onChange={(e) =>
-                handleMemberChange(index, "university_id", e.target.value)
-              }
+              onChange={(e) => handleMemberChange(index, "university_id", e.target.value)}
               required
             >
               <option value="">Üniversite Seçiniz</option>
@@ -318,57 +310,53 @@ const ParticipationForm = () => {
                 </option>
               ))}
             </select>
-
-            {/* Enstrüman */}
             <input
               type="text"
               placeholder="Enstrüman"
-              className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark
-                border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+              className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
               value={member.instrument}
-              onChange={(e) =>
-                handleMemberChange(index, "instrument", e.target.value)
-              }
+              onChange={(e) => handleMemberChange(index, "instrument", e.target.value)}
               required
             />
           </div>
         ))}
 
-        {/* Üye ekle butonu (orta kısımdaki yeşil + işareti) */}
-        <div className="flex justify-center mb-6">
+        {/* Grup üye ekleme ve silme butonları */}
+        <div className="flex justify-center mb-6 space-x-4">
           <button
             type="button"
             onClick={handleAddMember}
-            className="flex items-center justify-center
-              w-8 h-8 text-2xl font-bold rounded-full
-              bg-transparent border-2 border-green-500 text-green-500
-              hover:bg-green-500 hover:text-dark-white transition"
+            className="flex items-center justify-center w-8 h-8 text-2xl font-bold rounded-full bg-transparent border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-dark-white transition"
             title="Yeni üye ekle"
           >
             +
-            {/* İsterseniz FontAwesome kullanabilirsiniz:
-            <FontAwesomeIcon icon={faCirclePlus} className="text-green-500" /> */}
+          </button>
+          <button
+            type="button"
+            onClick={handleDeleteMember}
+            className="flex items-center justify-center w-8 h-8 text-2xl font-bold rounded-full bg-transparent border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-dark-white transition"
+            title="Son üyeyi sil"
+          >
+            -
           </button>
         </div>
 
         {/* Müzik Türü */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
-            Grubunuzun Yaptığı Müziği Hangi Tür Olarak Tanımlarsınız?
-            <span className="text-form-red">*</span>
+            Grubunuzun Yaptığı Müziği Hangi Tür Olarak Tanımlarsınız? <span className="text-form-red">*</span>
           </label>
           <input
             type="text"
             name="genre"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.genre}
             onChange={handleInputChange}
             required
           />
         </div>
 
-        {/* Şarkı Linkleri */}
+        {/* Yayımlanan Şarkılar */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
             Grubunuzun Yayımladığı Şarkılar Var İse Link Paylaşabilir misiniz?
@@ -376,14 +364,13 @@ const ParticipationForm = () => {
           <input
             type="text"
             name="links"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.links}
             onChange={handleInputChange}
           />
         </div>
 
-        {/* about_1 => Sahne Deneyimi */}
+        {/* Sahne Deneyimi */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
             Grubunuzun Sahne Deneyimi Var İse Bahsedebilir misiniz?
@@ -391,49 +378,44 @@ const ParticipationForm = () => {
           <textarea
             name="about_1"
             rows={3}
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.about_1}
             onChange={handleInputChange}
           />
         </div>
 
-        {/* about_2 => Grup Hakkında (Kısaca) */}
+        {/* Grup Hakkında */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
-            Grubunuzdan Kısaca Bahsedebilir misiniz?
-            (Kaç yıldır müzik yapıyorsunuz vs.)
-            <span className="text-form-red">*</span>
+            Grubunuzdan Kısaca Bahsedebilir misiniz? (Kaç yıldır müzik yapıyorsunuz vs.) <span className="text-form-red">*</span>
           </label>
           <textarea
             name="about_2"
             rows={3}
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark
-              border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.about_2}
             onChange={handleInputChange}
             required
           />
         </div>
 
-        {/* Ses Kaydı (file) */}
+        {/* Dosya Yükleme */}
         <div className="mb-6">
           <label className="block font-semibold mb-4">
-            Yarışmaya Katılmak İstediğiniz Performansınıza Ait Ses Kaydını Yükleyiniz
-            <span className="text-form-red">*</span>
+            Yarışmaya Katılmak İstediğiniz Performansınıza Ait Ses Kaydını Yükleyiniz <span className="text-form-red">*</span>
           </label>
           <div className="relative inline-block">
             <input
               id="fileInput"
               type="file"
+              accept=".mp3"
               onChange={handleFileChange}
               className="hidden"
               required
             />
             <label
               htmlFor="fileInput"
-              className="px-4 py-2 bg-dark-black text-dark-white
-                border border-form-gray-dark rounded cursor-pointer hover:opacity-80"
+              className="px-4 py-2 bg-dark-black text-dark-white border border-form-gray-dark rounded cursor-pointer hover:opacity-80"
             >
               Dosya Seç
             </label>
@@ -445,7 +427,7 @@ const ParticipationForm = () => {
           </div>
         </div>
 
-        {/* Katılım Koşulları */}
+        {/* Katılım Koşulları Onayı */}
         <div className="mb-2">
           <label className="inline-flex items-center">
             <input
@@ -456,13 +438,11 @@ const ParticipationForm = () => {
               className="form-checkbox h-5 w-5 text-dark-accentpurple dark:bg-form-input-dark"
               required
             />
-            <span className="ml-2">
-              Katılım Koşullarını Okudum Onaylıyorum
-            </span>
+            <span className="ml-2">Katılım Koşullarını Okudum Onaylıyorum</span>
           </label>
         </div>
 
-        {/* Kullanıcı Sözleşmesi */}
+        {/* Kullanıcı Sözleşmesi Onayı */}
         <div className="mb-6">
           <label className="inline-flex items-center">
             <input
@@ -473,9 +453,7 @@ const ParticipationForm = () => {
               className="form-checkbox h-5 w-5 text-dark-accentpurple dark:bg-form-input-dark"
               required
             />
-            <span className="ml-2">
-              Kullanıcı Sözleşmesini Okudum Onaylıyorum
-            </span>
+            <span className="ml-2">Kullanıcı Sözleşmesini Okudum Onaylıyorum</span>
           </label>
         </div>
 
@@ -483,12 +461,29 @@ const ParticipationForm = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-dark-accentpurple text-dark-white font-semibold
-              px-6 py-2 rounded hover:opacity-80 transition"
+            className="bg-dark-accentpurple text-dark-white font-semibold px-6 py-2 rounded hover:opacity-80 transition"
+            disabled={isSubmitting}
           >
-            Başvuruyu Gönder
+            {isSubmitting ? "Gönderiliyor..." : "Başvuruyu Gönder"}
           </button>
         </div>
+
+        {/* Gönderim Durumu */}
+        {isSubmitting && (
+          <div className="w-full bg-gray-200 rounded-full my-4">
+            <div
+              className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+              style={{ width: "50%" }}
+            >
+              Gönderiliyor...
+            </div>
+          </div>
+        )}
+        {submissionStatus && (
+          <p className={`mt-4 ${submissionStatus === "Başvuru başarıyla gönderildi" ? "text-green-500" : "text-red-500"}`}>
+            {submissionStatus}
+          </p>
+        )}
       </form>
     </div>
   );
