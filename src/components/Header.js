@@ -80,12 +80,14 @@ const Navbar = () => {
     <nav className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white sticky top-0 z-50 w-full">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-8 lg:px-20 border-b border-light-accentpurple">
         <div className="flex items-center space-x-2">
-          <img
+        <img
             src={logo}
             alt="Yıldız Teknik Üniversitesi Logo"
-            className={`w-20 h-max mobile-l:w-36 transition duration-300 ${darkMode ? "filter invert-0" : "filter invert"
-              }`}
-          />
+            className={`w-20 mobile-l:w-36 transition duration-300 h-auto ${
+            darkMode ? "" : "filter invert"
+            }`}
+/>
+
         </div>
 
         <div className="laptop:hidden">

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import konserImage from "../../images/konser.jpg";
+import konserImage from "../../images/eski-yildizlar-yarisiyor.png";
 import { LanguageContext } from "../../assets/LanguageContext";
 
 const Hero = () => {

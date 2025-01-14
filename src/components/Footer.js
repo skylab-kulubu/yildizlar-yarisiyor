@@ -73,7 +73,9 @@ const Footer = () => {
 
         {/* Orta - Sponsorlar */}
         <div className="flex flex-col items-center justify-center">
+
           {/* Ana Sponsor */}
+          {/* 
           <div className="flex justify-center gap-16 flex-wrap mb-8">
             {mainSponsors.map((sponsor) => (
               <div
@@ -90,6 +92,7 @@ const Footer = () => {
               </div>
             ))}
           </div>
+          */}
 
           {/* Diğer Sponsor */}
           <div className="flex justify-center gap-8 flex-wrap">
@@ -138,8 +141,7 @@ const Footer = () => {
           </a>
         </div>
         <p className="text-md mt-4">
-          SKY LAB: Bilgisayar Bilimleri Kulübü WebLab tarafından
-          geliştirilmiştir.
+          SKY LAB: Bilgisayar Bilimleri Kulübü WEBLAB ekibi tarafından geliştirilmiştir.
         </p>
       </div>
     </footer>

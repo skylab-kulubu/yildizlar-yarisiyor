@@ -22,7 +22,6 @@ const ParticipationForm = () => {
     about_2: "", // Grup Hakkında (kaç yıldır müzik yapıyorsunuz vs.)
     members: [{ name: "", university_id: "", instrument: "" }],
     termsAccepted: false,
-    agreementAccepted: false,
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -444,7 +443,9 @@ const ParticipationForm = () => {
           </label>
         </div>
 
+            
         {/* Kullanıcı Sözleşmesi Onayı */}
+        {/*  
         <div className="mb-6">
           <label className="inline-flex items-center">
             <input
@@ -458,6 +459,7 @@ const ParticipationForm = () => {
             <span className="ml-2">Kullanıcı Sözleşmesini Okudum Onaylıyorum</span>
           </label>
         </div>
+        */}
 
         {/* Gönder Butonu */}
         <div className="flex justify-center">

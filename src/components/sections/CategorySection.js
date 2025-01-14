@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useContext}  from "react";
+import { LanguageContext } from "../../assets/LanguageContext";
 
 const CategorySection = () => {
+  const { translations } = useContext(LanguageContext);
+
+
   return (
     <section
       className="
@@ -34,9 +38,7 @@ const CategorySection = () => {
           <div className="text-center md:text-right">
             <h3 className="text-2xl font-semibold mb-3">Beste Kategorisi</h3>
             <p className="leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dui mauris, dignissim vel enim nec, auctor venenatis sem. Interdum
-              et malesuada fames ac ante ipsum primis in faucibus
+              {translations.categories.compo}
             </p>
           </div>
 
@@ -44,9 +46,7 @@ const CategorySection = () => {
           <div className="text-center md:text-left">
             <h3 className="text-2xl font-semibold mb-3">Cover Kategorisi</h3>
             <p className="leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dui mauris, dignissim vel enim nec, auctor venenatis sem. Interdum
-              et malesuada fames ac ante ipsum primis in faucibus
+              {translations.categories.cover}
             </p>
           </div>
         </div>
@@ -62,9 +62,7 @@ const CategorySection = () => {
               Bireysel Performans
             </h3>
             <p className="leading-relaxed w-1/3 text-center mx-auto">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dui mauris, dignissim vel enim nec, auctor venenatis sem.
-              Interdum et malesuada fames ac ante ipsum primis in faucibus
+              {translations.categories.individual}
             </p>
           </div>
         </div>

@@ -52,8 +52,8 @@ const SponsorSection = () => {
             </div>
           ))}
         </div>
-
         {/* Diğer Sponsor */}
+        {/* 
         <div className="flex justify-center gap-8 flex-wrap">
           {regularSponsors.map((sponsor) => (
             <div
@@ -70,6 +70,7 @@ const SponsorSection = () => {
             </div>
           ))}
         </div>
+        */}
       </div>
     </section>
   );

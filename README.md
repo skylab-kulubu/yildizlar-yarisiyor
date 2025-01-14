@@ -1,4 +1,4 @@
-# Yıldızlar Yarışıyor '24 Web Uygulaması
+# Yıldızlar Yarışıyor '25 Web Uygulaması
 
 Bu proje, Yıldız Teknik Üniversitesi Müzik Kulübü (YTÜMK) tarafından düzenlenen "Yıldızlar Yarışıyor '24" etkinliği için SkyLab - WebLab ekibi tarafından geliştirilmiştir. Uygulama, katılımcılara ödül kategorileri, jüri üyeleri ve sponsorlar hakkında bilgi sunar. Ayrıca bir katılım formu sayfası içerir.
 
