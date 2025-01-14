@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { LanguageContext } from "../../assets/LanguageContext";
 
 const SponsorSection = () => {
-  const [sponsors, setSponsors] = useState([]); // State for all sponsor data
+  const [sponsors, setSponsors] = useState([]);
+  const { translations } = useContext(LanguageContext); // <-- Çeviri context
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,31 +12,35 @@ const SponsorSection = () => {
         const response = await axios.get(
           "https://api.ytumk.com.tr/v1/exapi/sponsors/c7165832-1fad-48bc-9219-dd12e8cd2ec0"
         );
-        setSponsors(response.data); // Store the entire array in state
+        setSponsors(response.data);
       } catch (error) {
         console.error("Error fetching sponsor data:", error);
       }
     };
-
     fetchData();
   }, []);
 
   const handleSponsorClick = (url) => {
     if (url) {
-      window.open(url, "_blank"); // Open the sponsor's website in a new tab
+      window.open(url, "_blank");
     }
   };
 
-  const mainSponsors = sponsors.filter(sponsor => sponsor.main_sponsor);
-  const regularSponsors = sponsors.filter(sponsor => !sponsor.main_sponsor);
+  const mainSponsors = sponsors.filter((sponsor) => sponsor.main_sponsor);
+  const regularSponsors = sponsors.filter((sponsor) => !sponsor.main_sponsor);
 
   return (
     <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white py-12 md:py-16">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Sponsorlarımız</h2>
-        
-        {/* Ana Sponsor */}
-        <p className="text-2xl mb-4">Ana Sponsorumuz</p>
+        {/* Başlık -> Sponsorlarımız / Our Sponsors */}
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
+          {translations.sections.sponsors.title}
+        </h2>
+
+        {/* Ana Sponsor -> Ana Sponsorumuz / Our Main Sponsor */}
+        <p className="text-2xl mb-4">
+          {translations.sections.sponsors.mainTitle}
+        </p>
         <div className="flex justify-center gap-16 flex-wrap mb-8">
           {mainSponsors.map((sponsor) => (
             <div
@@ -52,8 +57,13 @@ const SponsorSection = () => {
             </div>
           ))}
         </div>
-        {/* Diğer Sponsor */}
+
+        {/* Diğer Sponsorlar -> Diğer Sponsorlarımız / Other Sponsors */}
+        {/* Eğer bunu tekrar aktif hale getirecekseniz: */}
         {/* 
+        <p className="text-2xl mb-4">
+          {translations.sections.sponsors.otherTitle}
+        </p>
         <div className="flex justify-center gap-8 flex-wrap">
           {regularSponsors.map((sponsor) => (
             <div

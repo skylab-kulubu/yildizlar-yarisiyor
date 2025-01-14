@@ -205,7 +205,7 @@ const ParticipationForm = () => {
             onChange={handleInputChange}
             required
           >
-            <option value="">Üniversite Seçiniz</option>
+            <option value="">{translations.form.chooseUniversity}</option>
             {universities.map((uni) => (
               <option key={uni.id} value={uni.id}>
                 {uni.university}
@@ -288,7 +288,7 @@ const ParticipationForm = () => {
           <div key={index} className="flex flex-wrap gap-2 mb-4">
             <input
               type="text"
-              placeholder="Ad Soyad"
+              placeholder={translations.form.namePlaceHolder}
               className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
               value={member.name}
               onChange={(e) => handleMemberChange(index, "name", e.target.value)}
@@ -300,7 +300,7 @@ const ParticipationForm = () => {
               onChange={(e) => handleMemberChange(index, "university_id", e.target.value)}
               required
             >
-              <option value="">Üniversite Seçiniz</option>
+              <option value="">{translations.form.chooseUniversity}</option>
               {universities.map((uni) => (
                 <option key={uni.id} value={uni.id}>
                   {uni.university}
@@ -309,7 +309,7 @@ const ParticipationForm = () => {
             </select>
             <input
               type="text"
-              placeholder="Enstrüman"
+              placeholder={translations.form.instrumentPlaceHolder}
               className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
               value={member.instrument}
               onChange={(e) => handleMemberChange(index, "instrument", e.target.value)}

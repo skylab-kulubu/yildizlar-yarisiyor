@@ -1,9 +1,8 @@
-import React, {useContext}  from "react";
+import React, { useContext } from "react";
 import { LanguageContext } from "../../assets/LanguageContext";
 
 const CategorySection = () => {
   const { translations } = useContext(LanguageContext);
-
 
   return (
     <section
@@ -19,32 +18,26 @@ const CategorySection = () => {
       <div className="container mx-auto px-4">
         {/* ÖDÜL KATEGORİLERİ BAŞLIĞI */}
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Ödül Kategorileri
+          {translations.sections.category.awardTitle}
         </h2>
 
         {/* Üst Kategoriler: Beste / Cover */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            md:grid-cols-2
-            gap-8
-            md:gap-16
-            max-w-4xl
-            mx-auto
-          "
-        >
-          {/* Sol kolon (md'den itibaren text-right) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl mx-auto">
+          {/* Sol kolon */}
           <div className="text-center md:text-right">
-            <h3 className="text-2xl font-semibold mb-3">Beste Kategorisi</h3>
+            <h3 className="text-2xl font-semibold mb-3">
+              {translations.sections.category.compoHeading}
+            </h3>
             <p className="leading-relaxed">
               {translations.categories.compo}
             </p>
           </div>
 
-          {/* Sağ kolon (md'den itibaren text-left) */}
+          {/* Sağ kolon */}
           <div className="text-center md:text-left">
-            <h3 className="text-2xl font-semibold mb-3">Cover Kategorisi</h3>
+            <h3 className="text-2xl font-semibold mb-3">
+              {translations.sections.category.coverHeading}
+            </h3>
             <p className="leading-relaxed">
               {translations.categories.cover}
             </p>
@@ -53,15 +46,15 @@ const CategorySection = () => {
 
         {/* ALT KATEGORİLER */}
         <div className="mt-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 ">
-            Alt Kategori
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+            {translations.sections.category.subCategoryTitle}
           </h2>
 
-          <div className="text-center md:text-center">
-            <h3 className="text-2xl font-semibold mb-3 ">
-              Bireysel Performans
+          <div className="text-center">
+            <h3 className="text-2xl font-semibold mb-3">
+              {translations.sections.category.individualHeading}
             </h3>
-            <p className="leading-relaxed w-1/3 text-center mx-auto">
+            <p className="leading-relaxed w-full md:w-1/3 mx-auto">
               {translations.categories.individual}
             </p>
           </div>

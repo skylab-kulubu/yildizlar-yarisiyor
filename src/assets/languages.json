@@ -43,7 +43,32 @@
         "submissionStatusSuccess": "Başvuru başarıyla gönderildi",
         "submissionStatusError": "Başvuru gönderilirken bir hata oluştu, bir daha gönderiniz",
         "submitButton": "Başvuruyu Gönder",
-        "submittingButton": "Gönderiliyor..."
+        "submittingButton": "Gönderiliyor...",
+        "namePlaceHolder":"Ad Soyad",
+        "instrumentPlaceHolder":"Enstrüman",
+        "chooseUniversity":"Üniversite Seçiniz"
+      },
+      "sections": {
+        "sponsors": {
+          "title": "Sponsorlarımız",
+          "mainTitle": "Ana Sponsorumuz",
+          "otherTitle": "Diğer Sponsorlarımız"
+        },
+        "jury": {
+          "title": "Jüri Üyelerimiz",
+          "comingSoon": "Jüriler yakında açıklanacak"
+        },
+        "category": {
+          "awardTitle": "Ödül Kategorileri",
+          "compoHeading": "Beste Kategorisi",
+          "coverHeading": "Cover Kategorisi",
+          "subCategoryTitle": "Alt Kategori",
+          "individualHeading": "Bireysel Performans"
+        },
+        "footer": {
+          "followUs": "Bizi Takip Edin",
+          "skyLabText": "SKY LAB: Bilgisayar Bilimleri Kulübü WEBLAB ekibi tarafından geliştirilmiştir."
+        }
       }
     },
     "en": {
@@ -90,7 +115,32 @@
         "submissionStatusSuccess": "Your application has been successfully submitted",
         "submissionStatusError": "An error occurred while submitting the application, please try again",
         "submitButton": "Submit Application",
-        "submittingButton": "Submitting..."
+        "submittingButton": "Submitting...",
+        "namePlaceHolder":"Full Name",
+        "instrumentPlaceHolder":"Instrument",
+        "chooseUniversity":"Choose University"
+      },
+      "sections": {
+        "sponsors": {
+          "title": "Our Sponsors",
+          "mainTitle": "Our Main Sponsor",
+          "otherTitle": "Other Sponsors"
+        },
+        "jury": {
+          "title": "Our Jury Members",
+          "comingSoon": "Jury members will be announced soon"
+        },
+        "category": {
+          "awardTitle": "Award Categories",
+          "compoHeading": "Original (Composition)",
+          "coverHeading": "Cover Category",
+          "subCategoryTitle": "Sub Category",
+          "individualHeading": "Individual Performance"
+        },
+        "footer": {
+          "followUs": "Follow Us",
+          "skyLabText": "Developed by SKY LAB: The WebLab team of the Computer Science Club."
+        }
       }
     }
   }

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
+import { LanguageContext } from "../assets/LanguageContext";
 import ytumLogo from "../images/ytumklogo.png";
 import instaIcon from "../images/insta.png";
 import linkedinIcon from "../images/linkedin.png";
 import xIcon from "../images/x.png";
 import skylab from "../images/skylab.png";
 import weblab from "../images/weblab-color.png";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 const Footer = () => {
-  const [sponsors, setSponsors] = useState([]); // State for all sponsor data
+  const [sponsors, setSponsors] = useState([]);
+  const { translations } = useContext(LanguageContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,23 +18,23 @@ const Footer = () => {
         const response = await axios.get(
           "https://api.ytumk.com.tr/v1/exapi/sponsors/c7165832-1fad-48bc-9219-dd12e8cd2ec0"
         );
-        setSponsors(response.data); // Store the entire array in state
+        setSponsors(response.data);
       } catch (error) {
         console.error("Error fetching sponsor data:", error);
       }
     };
-
     fetchData();
   }, []);
 
   const handleSponsorClick = (url) => {
     if (url) {
-      window.open(url, "_blank"); // Open the sponsor's website in a new tab
+      window.open(url, "_blank");
     }
   };
 
-  const mainSponsors = sponsors.filter(sponsor => sponsor.main_sponsor);
-  const regularSponsors = sponsors.filter(sponsor => !sponsor.main_sponsor);
+  // Örnek olarak ana vs regular sponsorları alabilir, listeleyebilirsiniz.
+  const mainSponsors = sponsors.filter((s) => s.main_sponsor);
+  const regularSponsors = sponsors.filter((s) => !s.main_sponsor);
 
   return (
     <footer className="bg-black text-white py-8 px-4 md:px-8 lg:px-16 xl:px-32 border-b-8 border-dark-accentpurple">
@@ -41,7 +42,7 @@ const Footer = () => {
         {/* Sol - Sosyal Medya */}
         <div className="flex flex-col items-center md:items-start">
           <p className="text-dark-accentpurple font-bold mb-4 text-2xl">
-            Bizi Takip Edin
+            {translations.sections.footer.followUs}
           </p>
           <div className="grid grid-cols-3 gap-8">
             <a
@@ -71,30 +72,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Orta - Sponsorlar */}
+        {/* Orta - (Örnek) Sponsorlar */}
         <div className="flex flex-col items-center justify-center">
-
-          {/* Ana Sponsor */}
-          {/* 
-          <div className="flex justify-center gap-16 flex-wrap mb-8">
-            {mainSponsors.map((sponsor) => (
-              <div
-                key={sponsor.id}
-                className="text-center cursor-pointer"
-                onClick={() => handleSponsorClick(sponsor.website_url)}
-              >
-                <img
-                  src={sponsor.image_url}
-                  alt={sponsor.name}
-                  className="w-24 h-24 mx-auto mb-4 bg-black object-contain rounded-full border-2 border-gray-300"
-                />
-                <p className="text-lg font-semibold">{sponsor.name}</p>
-              </div>
-            ))}
-          </div>
-          */}
-
-          {/* Diğer Sponsor */}
+          {/* Dilerseniz burada da translations.sections.sponsors.title kullanabilirsiniz. */}
           <div className="flex justify-center gap-8 flex-wrap">
             {regularSponsors.map((sponsor) => (
               <div
@@ -141,7 +121,7 @@ const Footer = () => {
           </a>
         </div>
         <p className="text-md mt-4">
-          SKY LAB: Bilgisayar Bilimleri Kulübü WEBLAB ekibi tarafından geliştirilmiştir.
+          {translations.sections.footer.skyLabText}
         </p>
       </div>
     </footer>

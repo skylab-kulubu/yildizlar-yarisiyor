@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-// Örnek placeholder resmi (konuşmacı resmi). 
-// Resim URL'si gelmezse fallback olarak kullanılabilir.
+import React, { useEffect, useState, useContext } from "react";
+import { LanguageContext } from "../../assets/LanguageContext";
 import konusmaciImage from "../../images/konusmaci.png";
 
 const JurySection = () => {
-  // Jüri üyelerini tutacak state
   const [juries, setJuries] = useState([]);
+  const { translations } = useContext(LanguageContext);
 
   useEffect(() => {
     const fetchJuries = async () => {
@@ -17,7 +16,6 @@ const JurySection = () => {
           throw new Error("Jüri verileri çekilirken hata oluştu.");
         }
         const data = await response.json();
-        // data muhtemelen [{ id: "...", name: "...", image_url: "..." }, ...] formatındadır.
         setJuries(data);
       } catch (error) {
         console.error("Jüri verileri alınamadı:", error);
@@ -26,20 +24,22 @@ const JurySection = () => {
     fetchJuries();
   }, []);
 
-  // Üstte 3, altta 2 olacak şekilde ayırıyoruz (en az 5 üye varsayımı!)
+  // Üstte 3, altta 2 olacak şekilde ayırma (en az 5 üye varsa)
   const topThree = juries.slice(0, 3);
   const bottomTwo = juries.slice(3, 5);
 
   return (
     <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white py-12 md:py-16">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Jüri Üyelerimiz</h2>
+        {/* "Jüri Üyelerimiz" / "Our Jury Members" */}
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          {translations.sections.jury.title}
+        </h2>
 
         {juries.length === 0 ? (
-          <p className="text-xl">Jüriler yakında açıklanacak</p>
+          <p className="text-xl">{translations.sections.jury.comingSoon}</p>
         ) : (
           <>
-            {/* Üstte 3'lük grid */}
             <div className="grid grid-cols-3 gap-6 mb-8 place-items-center">
               {topThree.map((jury) => (
                 <div key={jury.id} className="flex flex-col items-center">
@@ -55,7 +55,6 @@ const JurySection = () => {
               ))}
             </div>
 
-            {/* Altta 2'lik grid */}
             <div className="grid grid-cols-2 gap-6 place-items-center">
               {bottomTwo.map((jury) => (
                 <div key={jury.id} className="flex flex-col items-center">
