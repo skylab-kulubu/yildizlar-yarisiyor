@@ -1,165 +1,165 @@
 {
-    "tr": {
-      "header": {
-        "home": "Ana Sayfa",
-        "categories": "Kategoriler",
-        "jury": "Jüri Üyeleri",
-        "sponsors": "Sponsorlarımız",
-        "form": "Katılım Formu"
-      },
-      "hero": {
-        "title": "Yıldızlar Yarışıyor ‘25",
-        "description": "Yıldızlar Yarışıyor, kulübümüzün 2013 senesinden beri gerçekleştirdiği gelenekselleşmiş etkinliklerinden biridir. Türkiye’nin her bir yanındaki üniversitelerden katılan müzik gruplarına bu etkinlik sayesinde sahne alma fırsatı tanıyoruz. Yarışmacılar, performansları ardından alanında uzman sanatçılardan oluşan jüriler tarafından değerlendirilir. Bu değerlendirme sonucunda kazanan yarışmacılara müzik kariyerlerini ilerletmeleri adına ödüller verilir."
-      },
-      "categories": {
-        "cover": "Bu kategoride gruplar söz ve müziği başka sanatçılara ait olan bir şarkıyı kendi tarzlarında yorumlarlar. Yorumun özgünlüğü göz önünde bulundurulur. Kategoriden birinci, ikinci ve üçüncü seçilir ve ödüller de buna göre verilir.",
-        "individual": "Bu kategoride grup içindeki üyelerin performansları ayrı ayrı değerlendirilir. Üyelerin enstrümanlarına ne kadar hakim oldukları ve yazıp çaldıkları partisyonlar göz önünde bulundurulur. En iyi vokal, en iyi gitar, en iyi bas ve en iyi bateri olmak üzere 4 farklı ödül verilir.",
-        "compo": "Bu kategoride gruplar söz ve müzik dahil olmak üzere kendi yazıp besteledikleri bir parça ile yarışmaya katılım sağlarlar. Kategoriden birinci, ikinci ve üçüncü seçilir ve ödüller de buna göre verilir."
-      },
-      "form": {
-        "categoryPrompt": "Lütfen yarışmaya katılmak istediğiniz kategoriyi seçiniz.",
-        "categories": {
-          "original": "Beste Kategorisi",
-          "cover": "Cover Kategorisi"
-        },
-        "requiredFieldNote": "* Zorunlu Soruyu Belirtir",
-        "nameLabel": "Adınız Soyadınız",
-        "universityLabel": "Okuduğunuz Üniversite",
-        "emailLabel": "e-Mail Adresiniz",
-        "phoneLabel": "Telefon Numaranız",
-        "contactInfoNote": "Başvurular incelendikten sonra verdiğiniz iletişim bilgileri üzerinden iletişime geçilir.",
-        "bandNameLabel": "Grubunuzun Adı",
-        "songNameLabel": "Şarkınızın Adı",
-        "membersLabel": "Grup Üyelerinin Ad Soyadları, Okudukları Üniversiteler ve Çaldıkları Enstrümanlar",
-        "addMemberButton": "Yeni üye ekle",
-        "removeMemberButton": "Son üyeyi sil",
-        "genreLabel": "Grubunuzun Yaptığı Müziği Hangi Tür Olarak Tanımlarsınız?",
-        "linksLabel": "Grubunuzun Yayımladığı Şarkılar Var İse Link Paylaşabilir misiniz?",
-        "experienceLabel": "Grubunuzun Sahne Deneyimi Var İse Bahsedebilir misiniz?",
-        "aboutLabel": "Grubunuzdan Kısaca Bahsedebilir misiniz? (Kaç yıldır müzik yapıyorsunuz vs.)",
-        "audioLabel": "Yarışmaya Katılmak İstediğiniz Performansınıza Ait Ses Kaydını Yükleyiniz",
-        "fileInputLabel": "Dosya Seç",
-        "termsAcceptedLabel": "Katılım Koşullarını Okudum Onaylıyorum",
-        "submissionStatusSuccess": "Başvuru başarıyla gönderildi",
-        "submissionStatusError": "Başvuru gönderilirken bir hata oluştu, bir daha gönderiniz",
-        "submitButton": "Başvuruyu Gönder",
-        "submittingButton": "Gönderiliyor...",
-        "namePlaceHolder":"Ad Soyad",
-        "instrumentPlaceHolder":"Enstrüman",
-        "chooseUniversity":"Üniversite Seçiniz"
-      },
-      "sections": {
-        "sponsors": {
-          "title": "Sponsorlarımız",
-          "mainTitle": "Ana Sponsorumuz",
-          "otherTitle": "Diğer Sponsorlarımız"
-        },
-        "jury": {
-          "title": "Jüri Üyelerimiz",
-          "comingSoon": "Jüriler yakında açıklanacak"
-        },
-        "category": {
-          "awardTitle": "Ödül Kategorileri",
-          "compoHeading": "Beste Kategorisi",
-          "coverHeading": "Cover Kategorisi",
-          "subCategoryTitle": "Alt Kategori",
-          "individualHeading": "Bireysel Performans"
-        },
-        "footer": {
-          "followUs": "Bizi Takip Edin",
-          "skyLabText": "SKY LAB: Bilgisayar Bilimleri Kulübü WEBLAB ekibi tarafından geliştirilmiştir."
-        }
-      },
-      "eventStatus": {
-          "loading": "Etkinlik bilgileri yükleniyor...",
-          "notFound": "Etkinlik bilgisi alınamadı.",
-          "inactive": "Bu form şu an aktif değil.",
-          "notStarted": "Başvuru formu henüz açılmadı.",
-          "startDateLabel": "Açılış tarihi: ",
-          "ended": "Başvuru formu sona erdi.",
-          "endDateLabel": "Kapanış tarihi: "
-        }
+  "tr": {
+    "header": {
+      "home": "Ana Sayfa",
+      "categories": "Kategoriler",
+      "jury": "Jüri Üyeleri",
+      "sponsors": "Sponsorlarımız",
+      "form": "Katılım Formu"
     },
-    "en": {
-      "header": {
-        "home": "Home",
-        "categories": "Categories",
-        "jury": "Jury Members",
-        "sponsors": "Our Sponsors",
-        "form": "Participation Form"
-      },
-      "hero": {
-        "title": "Yıldızlar Yarışıyor ‘25",
-        "description": "Yıldızlar Yarışıyor is one of the traditional events organized by our club since 2013. We provide an opportunity for music groups from universities all over Turkey to perform on stage through this event. Competitors are evaluated by juries consisting of expert artists in their fields after their performances. As a result of this evaluation, the winning competitors are awarded prizes to advance their music careers."
-      },
+    "hero": {
+      "title": "Yıldızlar Yarışıyor ‘25",
+      "description": "Yıldızlar Yarışıyor, kulübümüzün 2013 senesinden beri gerçekleştirdiği gelenekselleşmiş etkinliklerinden biridir. Türkiye’nin her bir yanındaki üniversitelerden katılan müzik gruplarına bu etkinlik sayesinde sahne alma fırsatı tanıyoruz. Yarışmacılar, performansları ardından alanında uzman sanatçılardan oluşan jüriler tarafından değerlendirilir. Bu değerlendirme sonucunda kazanan yarışmacılara müzik kariyerlerini ilerletmeleri adına ödüller verilir."
+    },
+    "categories": {
+      "cover": "Bu kategoride gruplar söz ve müziği başka sanatçılara ait olan bir şarkıyı kendi tarzlarında yorumlarlar. Yorumun özgünlüğü göz önünde bulundurulur. Kategoriden birinci, ikinci ve üçüncü seçilir ve ödüller de buna göre verilir.",
+      "individual": "Bu kategoride grup içindeki üyelerin performansları ayrı ayrı değerlendirilir. Üyelerin enstrümanlarına ne kadar hakim oldukları ve yazıp çaldıkları partisyonlar göz önünde bulundurulur. En iyi vokal, en iyi gitar, en iyi bas ve en iyi bateri olmak üzere 4 farklı ödül verilir.",
+      "compo": "Bu kategoride gruplar söz ve müzik dahil olmak üzere kendi yazıp besteledikleri bir parça ile yarışmaya katılım sağlarlar. Kategoriden birinci, ikinci ve üçüncü seçilir ve ödüller de buna göre verilir."
+    },
+    "form": {
+      "categoryPrompt": "Lütfen yarışmaya katılmak istediğiniz kategoriyi seçiniz.",
       "categories": {
-        "cover": "English cover category",
-        "individual": "English individual category",
-        "compo": "English composition category"
+        "original": "Beste Kategorisi",
+        "cover": "Cover Kategorisi"
       },
-      "form": {
-        "categoryPrompt": "Please select the category you want to participate in.",
-        "categories": {
-          "original": "Original (Composition)",
-          "cover": "Cover Category"
-        },
-        "requiredFieldNote": "* Marks a required field",
-        "nameLabel": "Your Full Name",
-        "universityLabel": "University You Attend",
-        "emailLabel": "Your E-mail Address",
-        "phoneLabel": "Your Phone Number",
-        "contactInfoNote": "After reviewing your application, we will contact you via the contact information you provided.",
-        "bandNameLabel": "Your Band's Name",
-        "songNameLabel": "Title of Your Song",
-        "membersLabel": "Band members' Names, Universities, and Instruments",
-        "addMemberButton": "Add a new member",
-        "removeMemberButton": "Remove the last member",
-        "genreLabel": "What genre would you define your music as?",
-        "linksLabel": "If your band has released any songs, please share the links.",
-        "experienceLabel": "If your band has stage experience, could you talk about it?",
-        "aboutLabel": "Please briefly talk about your band (How many years have you been making music, etc.)",
-        "audioLabel": "Please upload an audio recording of the performance you want to participate with.",
-        "fileInputLabel": "Choose File",
-        "termsAcceptedLabel": "I have read and agree to the Terms of Participation",
-        "submissionStatusSuccess": "Your application has been successfully submitted",
-        "submissionStatusError": "An error occurred while submitting the application, please try again",
-        "submitButton": "Submit Application",
-        "submittingButton": "Submitting...",
-        "namePlaceHolder":"Full Name",
-        "instrumentPlaceHolder":"Instrument",
-        "chooseUniversity":"Choose University"
+      "requiredFieldNote": "* Zorunlu Soruyu Belirtir",
+      "nameLabel": "Adınız Soyadınız",
+      "universityLabel": "Okuduğunuz Üniversite",
+      "emailLabel": "e-Mail Adresiniz",
+      "phoneLabel": "Telefon Numaranız",
+      "contactInfoNote": "Başvurular incelendikten sonra verdiğiniz iletişim bilgileri üzerinden iletişime geçilir.",
+      "bandNameLabel": "Grubunuzun Adı",
+      "songNameLabel": "Şarkınızın Adı",
+      "membersLabel": "Grup Üyelerinin Ad Soyadları, Okudukları Üniversiteler ve Çaldıkları Enstrümanlar",
+      "addMemberButton": "Yeni üye ekle",
+      "removeMemberButton": "Son üyeyi sil",
+      "genreLabel": "Grubunuzun Yaptığı Müziği Hangi Tür Olarak Tanımlarsınız?",
+      "linksLabel": "Grubunuzun Yayımladığı Şarkılar Var İse Link Paylaşabilir misiniz?",
+      "experienceLabel": "Grubunuzun Sahne Deneyimi Var İse Bahsedebilir misiniz?",
+      "aboutLabel": "Grubunuzdan Kısaca Bahsedebilir misiniz? (Kaç yıldır müzik yapıyorsunuz vs.)",
+      "audioLabel": "Yarışmaya Katılmak İstediğiniz Performansınıza Ait Ses Kaydını Yükleyiniz",
+      "fileInputLabel": "Dosya Seç",
+      "termsAcceptedLabel": "Katılım Koşullarını Okudum Onaylıyorum",
+      "submissionStatusSuccess": "Başvuru başarıyla gönderildi",
+      "submissionStatusError": "Başvuru gönderilirken bir hata oluştu, bir daha gönderiniz",
+      "submitButton": "Başvuruyu Gönder",
+      "submittingButton": "Gönderiliyor...",
+      "namePlaceHolder": "Ad Soyad",
+      "instrumentPlaceHolder": "Enstrüman",
+      "chooseUniversity": "Üniversite Seçiniz"
+    },
+    "sections": {
+      "sponsors": {
+        "title": "Sponsorlarımız",
+        "mainTitle": "Ana Sponsorumuz",
+        "otherTitle": "Diğer Sponsorlarımız"
       },
-      "sections": {
-        "sponsors": {
-          "title": "Our Sponsors",
-          "mainTitle": "Our Main Sponsor",
-          "otherTitle": "Other Sponsors"
-        },
-        "jury": {
-          "title": "Our Jury Members",
-          "comingSoon": "Jury members will be announced soon"
-        },
-        "category": {
-          "awardTitle": "Award Categories",
-          "compoHeading": "Original (Composition)",
-          "coverHeading": "Cover Category",
-          "subCategoryTitle": "Sub Category",
-          "individualHeading": "Individual Performance"
-        },
-        "footer": {
-          "followUs": "Follow Us",
-          "skyLabText": "Developed by SKY LAB: The WEBLAB team of the Computer Science Club."
-        }
+      "jury": {
+        "title": "Jüri Üyelerimiz",
+        "comingSoon": "Jüriler yakında açıklanacak"
       },
-      "eventStatus": {
-          "loading": "Loading event details...",
-          "notFound": "Event information could not be retrieved.",
-          "inactive": "This form is not active at the moment.",
-          "notStarted": "The application form has not been opened yet.",
-          "startDateLabel": "Opening date: ",
-          "ended": "The application form has ended.",
-          "endDateLabel": "Closing date: "
-        }
+      "category": {
+        "awardTitle": "Ödül Kategorileri",
+        "compoHeading": "Beste Kategorisi",
+        "coverHeading": "Cover Kategorisi",
+        "subCategoryTitle": "Alt Kategori",
+        "individualHeading": "Bireysel Performans"
+      },
+      "footer": {
+        "followUs": "Bizi Takip Edin",
+        "skyLabText": "SKY LAB: Bilgisayar Bilimleri Kulübü WEBLAB ekibi tarafından geliştirilmiştir."
+      }
+    },
+    "eventStatus": {
+      "loading": "Etkinlik bilgileri yükleniyor...",
+      "notFound": "Etkinlik bilgisi alınamadı.",
+      "inactive": "Bu form şu an aktif değil.",
+      "notStarted": "Başvuru formu henüz açılmadı.",
+      "startDateLabel": "Açılış tarihi: ",
+      "ended": "Başvuru formu sona erdi.",
+      "endDateLabel": "Kapanış tarihi: "
+    }
+  },
+  "en": {
+    "header": {
+      "home": "Home",
+      "categories": "Categories",
+      "jury": "Jury Members",
+      "sponsors": "Our Sponsors",
+      "form": "Participation Form"
+    },
+    "hero": {
+      "title": "Yıldızlar Yarışıyor ‘25",
+      "description": "Yıldızlar Yarışıyor is one of the traditional events organized by our club since 2013. We provide an opportunity for music groups from universities all over Turkey to perform on stage through this event. Competitors are evaluated by juries consisting of expert artists in their fields after their performances. As a result of this evaluation, the winning competitors are awarded prizes to advance their music careers."
+    },
+    "categories": {
+      "cover": "In this category, groups perform a song originally written and composed by other artists in their own style. The originality of the interpretation is taken into account. A first, second, and third place are selected from the category, and awards are given accordingly.",
+      "individual": "In this category, the performances of individual members within the group are evaluated separately. The focus is on how proficient the members are with their instruments and the parts they compose and play. Four different awards are given: Best Vocalist, Best Guitarist, Best Bassist, and Best Drummer.",
+      "compo": "In this category, groups participate with a piece that they have written and composed entirely themselves, including lyrics and music. A first, second, and third place are selected from the category, and awards are given accordingly."
+    },
+    "form": {
+      "categoryPrompt": "Please select the category you want to participate in.",
+      "categories": {
+        "original": "Original (Composition)",
+        "cover": "Cover Category"
+      },
+      "requiredFieldNote": "* Marks a required field",
+      "nameLabel": "Your Full Name",
+      "universityLabel": "University You Attend",
+      "emailLabel": "Your E-mail Address",
+      "phoneLabel": "Your Phone Number",
+      "contactInfoNote": "After reviewing your application, we will contact you via the contact information you provided.",
+      "bandNameLabel": "Your Band's Name",
+      "songNameLabel": "Title of Your Song",
+      "membersLabel": "Band members' Names, Universities, and Instruments",
+      "addMemberButton": "Add a new member",
+      "removeMemberButton": "Remove the last member",
+      "genreLabel": "What genre would you define your music as?",
+      "linksLabel": "If your band has released any songs, please share the links.",
+      "experienceLabel": "If your band has stage experience, could you talk about it?",
+      "aboutLabel": "Please briefly talk about your band (How many years have you been making music, etc.)",
+      "audioLabel": "Please upload an audio recording of the performance you want to participate with.",
+      "fileInputLabel": "Choose File",
+      "termsAcceptedLabel": "I have read and agree to the Terms of Participation",
+      "submissionStatusSuccess": "Your application has been successfully submitted",
+      "submissionStatusError": "An error occurred while submitting the application, please try again",
+      "submitButton": "Submit Application",
+      "submittingButton": "Submitting...",
+      "namePlaceHolder": "Full Name",
+      "instrumentPlaceHolder": "Instrument",
+      "chooseUniversity": "Choose University"
+    },
+    "sections": {
+      "sponsors": {
+        "title": "Our Sponsors",
+        "mainTitle": "Our Main Sponsor",
+        "otherTitle": "Other Sponsors"
+      },
+      "jury": {
+        "title": "Our Jury Members",
+        "comingSoon": "Jury members will be announced soon"
+      },
+      "category": {
+        "awardTitle": "Award Categories",
+        "compoHeading": "Original (Composition)",
+        "coverHeading": "Cover Category",
+        "subCategoryTitle": "Sub Category",
+        "individualHeading": "Individual Performance"
+      },
+      "footer": {
+        "followUs": "Follow Us",
+        "skyLabText": "Developed by SKY LAB: The WEBLAB team of the Computer Science Club."
+      }
+    },
+    "eventStatus": {
+      "loading": "Loading event details...",
+      "notFound": "Event information could not be retrieved.",
+      "inactive": "This form is not active at the moment.",
+      "notStarted": "The application form has not been opened yet.",
+      "startDateLabel": "Opening date: ",
+      "ended": "The application form has ended.",
+      "endDateLabel": "Closing date: "
     }
   }
+}
   
