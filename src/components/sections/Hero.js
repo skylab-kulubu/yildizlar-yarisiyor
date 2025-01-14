@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import konserImage from "../../images/konser.jpg";
-import languages from "../../assets/languages.json";
+import { LanguageContext } from "../../assets/LanguageContext";
 
 const Hero = () => {
-  const [language, setLanguage] = useState('tr'); // Default language is Turkish
-
-  useEffect(() => {
-    const lang = localStorage.getItem('language');
-    if (lang) {
-      setLanguage(lang);
-    }
-  }, []);
-
-  const content = languages[language].hero;
+  const { translations } = useContext(LanguageContext);
 
   return (
     <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white h-[calc(100vh-104px)] flex justify-center items-center">
@@ -23,9 +14,9 @@ const Hero = () => {
           className="rounded-[4.5rem] w-full md:w-1/2 aspect-w-1 aspect-h-1 shadow-lg"
         />
         <div className="text-center md:text-left w-1/2 mobile-l:w-2/3 p-4">
-          <h1 className="text-4xl font-bold mb-4">{content.title}</h1>
+          <h1 className="text-4xl font-bold mb-4">{translations.hero.title}</h1>
           <p className="">
-            {content.description}
+            {translations.hero.description}
           </p>
         </div>
       </div>
