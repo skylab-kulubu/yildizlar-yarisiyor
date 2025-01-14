@@ -35,37 +35,43 @@ const JurySection = () => {
       <div className="container mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Jüri Üyelerimiz</h2>
 
-        {/* Üstte 3'lük grid */}
-        <div className="grid grid-cols-3 gap-6 mb-8 place-items-center">
-          {topThree.map((jury) => (
-            <div key={jury.id} className="flex flex-col items-center">
-              <img
-                src={jury.image_url || konusmaciImage}
-                alt={jury.name || "Jüri Üyesi"}
-                className="w-32 h-32 rounded-lg shadow-md object-cover"
-              />
-              <p className="mt-2 text-sm md:text-base">
-                {jury.name || "Bilinmeyen"}
-              </p>
+        {juries.length === 0 ? (
+          <p className="text-xl">Jüriler yakında açıklanacak</p>
+        ) : (
+          <>
+            {/* Üstte 3'lük grid */}
+            <div className="grid grid-cols-3 gap-6 mb-8 place-items-center">
+              {topThree.map((jury) => (
+                <div key={jury.id} className="flex flex-col items-center">
+                  <img
+                    src={jury.image_url || konusmaciImage}
+                    alt={jury.name || "Jüri Üyesi"}
+                    className="w-32 h-32 rounded-lg shadow-md object-cover"
+                  />
+                  <p className="mt-2 text-sm md:text-base">
+                    {jury.name || "Bilinmeyen"}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Altta 2'lik grid */}
-        <div className="grid grid-cols-2 gap-6 place-items-center">
-          {bottomTwo.map((jury) => (
-            <div key={jury.id} className="flex flex-col items-center">
-              <img
-                src={jury.image_url || konusmaciImage}
-                alt={jury.name || "Jüri Üyesi"}
-                className="w-32 h-32 rounded-lg shadow-md object-cover"
-              />
-              <p className="mt-2 text-sm md:text-base">
-                {jury.name || "Bilinmeyen"}
-              </p>
+            {/* Altta 2'lik grid */}
+            <div className="grid grid-cols-2 gap-6 place-items-center">
+              {bottomTwo.map((jury) => (
+                <div key={jury.id} className="flex flex-col items-center">
+                  <img
+                    src={jury.image_url || konusmaciImage}
+                    alt={jury.name || "Jüri Üyesi"}
+                    className="w-32 h-32 rounded-lg shadow-md object-cover"
+                  />
+                  <p className="mt-2 text-sm md:text-base">
+                    {jury.name || "Bilinmeyen"}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </div>
     </section>
   );

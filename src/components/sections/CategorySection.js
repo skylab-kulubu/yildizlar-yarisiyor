@@ -54,41 +54,18 @@ const CategorySection = () => {
         {/* ALT KATEGORİLER */}
         <div className="mt-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 ">
-            Alt Kategoriler
+            Alt Kategori
           </h2>
 
-          <div
-            className="
-              grid
-              grid-cols-1
-              md:grid-cols-2
-              gap-8
-              md:gap-16
-              max-w-4xl
-              mx-auto
-            "
-          >
-            {/* Sol kolon (md'den itibaren text-right) */}
-            <div className="text-center md:text-right">
-              <h3 className="text-2xl font-semibold mb-3 ">
-                Bireysel Performans
-              </h3>
-              <p className="leading-relaxed ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                dui mauris, dignissim vel enim nec, auctor venenatis sem.
-                Interdum et malesuada fames ac ante ipsum primis in faucibus
-              </p>
-            </div>
-
-            {/* Sağ kolon (md'den itibaren text-left) */}
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl font-semibold mb-3 ">Grup Performansı</h3>
-              <p className="leading-relaxed ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                dui mauris, dignissim vel enim nec, auctor venenatis sem.
-                Interdum et malesuada fames ac ante ipsum primis in faucibus
-              </p>
-            </div>
+          <div className="text-center md:text-center">
+            <h3 className="text-2xl font-semibold mb-3 ">
+              Bireysel Performans
+            </h3>
+            <p className="leading-relaxed w-1/3 text-center mx-auto">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              dui mauris, dignissim vel enim nec, auctor venenatis sem.
+              Interdum et malesuada fames ac ante ipsum primis in faucibus
+            </p>
           </div>
         </div>
       </div>

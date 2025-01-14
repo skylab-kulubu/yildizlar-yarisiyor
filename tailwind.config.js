@@ -4,6 +4,35 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      spacing: {
+        '1': '0.25rem',  // 4px
+        '2': '0.5rem',   // 8px
+        '4': '1rem',     // 16px
+        '8': '2rem',     // 32px
+        '12': '3rem',    // 48px
+        '16': '4rem',    // 64px
+        '20': '5rem',    // 80px
+        '21': '5.25rem',    // 80px
+        '24': '6rem',    // 96px
+        '32': '8rem',    // 128px
+        '40': '10rem',   // 160px
+        '48': '12rem',   // 192px
+        '56': '14rem',   // 224px
+        '64': '16rem',   // 256px
+        '72': '18rem',   
+        '80': '20rem',   // 320px
+        '88': '22rem',   
+        '96': '24rem',   // 384px
+        '100': '25rem',  // 400px
+      },
+      screens: {
+        'mobile-s': '320px',
+        'mobile-m': '375px',
+        'mobile-l': '425px',
+        'tablet': '768px',
+        'laptop': '1024px',
+        'laptop-l': '1440px',
+      },
       colors: {
         // Genel Renkler (Koyu Mod)
         dark: {

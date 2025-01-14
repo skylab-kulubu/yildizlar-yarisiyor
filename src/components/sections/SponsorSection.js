@@ -26,13 +26,18 @@ const SponsorSection = () => {
     }
   };
 
+  const mainSponsors = sponsors.filter(sponsor => sponsor.main_sponsor);
+  const regularSponsors = sponsors.filter(sponsor => !sponsor.main_sponsor);
+
   return (
     <section className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white py-12 md:py-16">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Sponsorlarımız</h2>
+        
+        {/* Ana Sponsor */}
         <p className="text-2xl mb-4">Ana Sponsorumuz</p>
-        <div className="flex justify-center gap-16 flex-wrap">
-          {sponsors.map((sponsor) => (
+        <div className="flex justify-center gap-16 flex-wrap mb-8">
+          {mainSponsors.map((sponsor) => (
             <div
               key={sponsor.id}
               className="text-center cursor-pointer"
@@ -42,6 +47,24 @@ const SponsorSection = () => {
                 src={sponsor.image_url}
                 alt={sponsor.name}
                 className="w-36 h-36 mx-auto mb-4 bg-black object-contain rounded-full border-2 border-gray-300"
+              />
+              <p className="text-lg font-semibold">{sponsor.name}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Diğer Sponsor */}
+        <div className="flex justify-center gap-8 flex-wrap">
+          {regularSponsors.map((sponsor) => (
+            <div
+              key={sponsor.id}
+              className="text-center cursor-pointer"
+              onClick={() => handleSponsorClick(sponsor.website_url)}
+            >
+              <img
+                src={sponsor.image_url}
+                alt={sponsor.name}
+                className="w-24 h-24 mx-auto mb-4 bg-black object-contain rounded-full border-2 border-gray-300"
               />
               <p className="text-lg font-semibold">{sponsor.name}</p>
             </div>

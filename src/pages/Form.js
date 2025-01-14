@@ -173,13 +173,13 @@ const ParticipationForm = () => {
       </div>
 
       {/* * Zorunlu Soruyu Belirtir */}
-      <p className="mb-6 text-sm text-form-gray-light">
+      <p className="mb-6 text-sm text-form-gray-dark dark:text-form-gray-light">
         <span className="text-form-red font-bold">*</span> Zorunlu Soruyu Belirtir
       </p>
 
       {/* Form Alanları */}
       <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-transparent">
-        
+
         {/* Ad Soyad */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">
@@ -202,7 +202,7 @@ const ParticipationForm = () => {
           </label>
           <select
             name="university_id"
-            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple rounded"
+            className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
             value={formData.university_id}
             onChange={handleInputChange}
             required
@@ -247,7 +247,7 @@ const ParticipationForm = () => {
         </div>
 
         {/* Başvuru Bilgilendirme */}
-        <p className="text-xs text-form-gray-light mb-4">
+        <p className="text-sm text-form-gray-dark dark:text-form-gray-light mb-4">
           Başvurular incelendikten sonra verdiğiniz iletişim bilgileri üzerinden iletişime geçilir.
         </p>
 
@@ -298,7 +298,7 @@ const ParticipationForm = () => {
               required
             />
             <select
-              className="flex-1 p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
+              className="w-full p-2 dark:bg-form-input-dark dark:text-form-text-dark border border-form-gray-dark focus:outline-none focus:ring-2 focus:ring-dark-accentpurple"
               value={member.university_id}
               onChange={(e) => handleMemberChange(index, "university_id", e.target.value)}
               required
@@ -331,14 +331,16 @@ const ParticipationForm = () => {
           >
             +
           </button>
-          <button
-            type="button"
-            onClick={handleDeleteMember}
-            className="flex items-center justify-center w-8 h-8 text-2xl font-bold rounded-full bg-transparent border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-dark-white transition"
-            title="Son üyeyi sil"
-          >
-            -
-          </button>
+          {formData.members.length > 1 && (
+            <button
+              type="button"
+              onClick={handleDeleteMember}
+              className="flex items-center justify-center w-8 h-8 text-2xl font-bold rounded-full bg-transparent border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-dark-white transition"
+              title="Son üyeyi sil"
+            >
+              -
+            </button>
+          )}
         </div>
 
         {/* Müzik Türü */}

@@ -5,10 +5,15 @@ import turkIcon from "../images/turk.png";
 import engIcon from "../images/ing.png";
 import modGece from "../images/mod-gece.png";
 import modGunduz from "../images/mod-gunduz.png";
-import axios from "axios"; // Optional: If you prefer to use axios
+import axios from "axios";
+import languages from "../assets/languages.json"; // Dil çevirileri
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true); // Set initial state to true for dark mode
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [language, setLanguage] = useState('tr'); // Default language is Turkish
+  const [translations, setTranslations] = useState(languages[language].header); // Set initial translations
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,6 +21,9 @@ const Navbar = () => {
   const [title, setTitle] = useState(""); // Add state for title
 
   useEffect(() => {
+    // Add dark mode class to html element on mount
+    document.documentElement.classList.add("dark");
+
     // Fetch data from the API
     const fetchData = async () => {
       try {
@@ -31,7 +39,13 @@ const Navbar = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Update translations whenever the language state changes
+    setTranslations(languages[language].header);
+  }, [language]);
+
   const toggleDarkMode = () => {
+    setIsMenuOpen(false); // Close the menu
     setDarkMode(!darkMode);
     if (darkMode) {
       document.documentElement.classList.remove("dark");
@@ -41,6 +55,7 @@ const Navbar = () => {
   };
 
   const handleScrollOrRedirect = () => {
+    setIsMenuOpen(false); // Close the menu
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
@@ -49,6 +64,7 @@ const Navbar = () => {
   };
 
   const handleScroll = (id) => {
+    setIsMenuOpen(false); // Close the menu
     if (location.pathname !== "/") {
       navigate("/", { state: { scrollTo: id } });
     } else {
@@ -60,63 +76,74 @@ const Navbar = () => {
   };
 
   const navigateToForm = () => {
+    setIsMenuOpen(false); // Close the menu
     navigate("/form");
   };
 
-  const [language, setLanguage] = useState('tr'); // Default language is Turkish
-
   const handleLanguageChange = (lang) => {
-    setLanguage(lang);
-    // Optionally, you can also store the selected language in localStorage
+    setIsMenuOpen(false);
+    setLanguage(lang); // Update the language state
     localStorage.setItem('language', lang);
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <nav className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white sticky top-0 z-50">
-      <div className="container mx-auto flex items-center justify-between py-8 px-32 border-b border-light-accentpurple">
+    <nav className="bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white sticky top-0 z-50 w-full">
+      <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-8 lg:px-20 border-b border-light-accentpurple">
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <img
             src={logo}
             alt="Yıldız Teknik Üniversitesi Logo"
-            className={`w-16 h-auto transition duration-300 ${darkMode ? "filter invert-0" : "filter invert"
+            className={`w-20 h-max mobile-l:w-36 transition duration-300 ${darkMode ? "filter invert-0" : "filter invert"
               }`}
           />
-          <span className="font-bold text-lg">{title}</span>
+        </div>
+
+        {/* Hamburger Menu for Mobile */}
+        <div className="laptop:hidden">
+          <button onClick={toggleMenu} className={`focus:outline-none ${darkMode ? 'text-dark-white' : 'text-dark-black'}`}>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
+            </svg>
+          </button>
         </div>
 
         {/* Menü */}
-        <ul className="flex items-center space-x-6">
+        <ul className={`py-4 absolute mobile-l:top-32 top-21 left-0 w-full bg-light-bgcolor dark:bg-dark-bgcolor laptop:static laptop:flex laptop:flex-row items-center justify-center space-y-4 laptop:space-y-0 laptop:space-x-6 ${isMenuOpen ? "flex flex-col" : "hidden"} laptop:flex`}>
           <li>
             <button
               onClick={handleScrollOrRedirect}
-              className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
+              className="hover:text-dark-accentpurple transition laptop:border-r laptop:border-dark-accentpurple pr-0 laptop:pr-4"
             >
-              {language === 'tr' ? <p>Ana Sayfa</p> : <p>Home Page</p>}
+              {translations.home}
             </button>
           </li>
           <li>
             <button
               onClick={() => handleScroll("kategoriler")}
-              className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
+              className="hover:text-dark-accentpurple transition laptop:border-r laptop:border-dark-accentpurple pr-0 laptop:pr-4"
             >
-              Kategoriler
+              {translations.categories}
             </button>
           </li>
           <li>
             <button
               onClick={() => handleScroll("juri")}
-              className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
+              className="hover:text-dark-accentpurple transition laptop:border-r laptop:border-dark-accentpurple pr-0 laptop:pr-4"
             >
-              Jüri Üyeleri
+              {translations.jury}
             </button>
           </li>
           <li>
             <button
               onClick={() => handleScroll("sponsorlar")}
-              className="hover:text-dark-accentpurple transition border-r border-dark-accentpurple pr-4"
+              className="hover:text-dark-accentpurple transition laptop:border-r laptop:border-dark-accentpurple pr-0 laptop:pr-4"
             >
-              Sponsorlarımız
+              {translations.sponsors}
             </button>
           </li>
           <li>
@@ -124,37 +151,60 @@ const Navbar = () => {
               onClick={navigateToForm}
               className="hover:text-dark-accentpurple transition"
             >
-              Katılım Formu
+              {translations.form}
             </button>
+          </li>
+          {/* Dil ve Mod Toggle for Mobile */}
+          <li className="flex flex-col items-center space-y-4 laptop:hidden">
+            <div className="flex items-center space-x-2">
+              <img
+                src={turkIcon}
+                alt="Türkçe"
+                className="w-[28px] h-[18px] rounded-full cursor-pointer"
+                onClick={() => handleLanguageChange('tr')}
+              />
+              <img
+                src={engIcon}
+                alt="İngilizce"
+                className="w-[28px] h-[18px] rounded-full cursor-pointer"
+                onClick={() => handleLanguageChange('en')}
+              />
+              <button onClick={toggleDarkMode} className="w-6 h-6">
+                <img
+                  src={darkMode ? modGece : modGunduz}
+                  alt="Koyu Mod"
+                  className="w-full h-full"
+                />
+              </button>
+            </div>
           </li>
         </ul>
 
-        {/* Dil ve Mod Toggle */}
-        <div className="flex items-center space-x-4">
-          {/* Dil */}
-          <div className="flex items-center space-x-2">
+        {/* Dil ve Mod Toggle for Desktop */}
+        <div className="hidden laptop:flex items-center">
+          <div className="flex items-center">
             <img
               src={turkIcon}
               alt="Türkçe"
-              className="w-[42px] h-[28px] rounded-full cursor-pointer"
+              className="w-[28px] h-[18px] md:w-[42px] md:h-[28px] rounded-full cursor-pointer p-1"
               onClick={() => handleLanguageChange('tr')}
             />
             <img
               src={engIcon}
               alt="İngilizce"
-              className="w-[42px] h-[28px] rounded-full cursor-pointer"
+              className="w-[28px] h-[18px] md:w-[42px] md:h-[28px] rounded-full cursor-pointer p-1"
               onClick={() => handleLanguageChange('en')}
             />
+            <div className="flex items-center space-x-2">
+              <button onClick={toggleDarkMode} className="w-6 h-6 md:w-8 md:h-8 p-1">
+                <img
+                  src={darkMode ? modGece : modGunduz}
+                  alt="Koyu Mod"
+                  className="w-full h-full"
+                />
+              </button>
+            </div>
           </div>
-
-          {/* Koyu Mod Toggle */}
-          <button onClick={toggleDarkMode} className="w-8 h-8">
-            <img
-              src={darkMode ? modGece : modGunduz}
-              alt="Koyu Mod"
-              className="w-full h-full"
-            />
-          </button>
         </div>
       </div>
     </nav>
