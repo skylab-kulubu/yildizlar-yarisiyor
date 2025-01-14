@@ -13,7 +13,7 @@ const Hero = () => {
           alt="Konser"
           className="rounded-[4.5rem] w-full md:w-1/2 aspect-w-1 aspect-h-1 shadow-lg"
         />
-        <div className="text-center md:text-left w-1/2 mobile-l:w-2/3 p-4">
+        <div className="text-center md:text-left p-4">
           <h1 className="text-4xl font-bold mb-4">{translations.hero.title}</h1>
           <p className="">
             {translations.hero.description}
