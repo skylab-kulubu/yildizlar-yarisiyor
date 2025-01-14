@@ -59,8 +59,7 @@ const SponsorSection = () => {
         </div>
 
         {/* Diğer Sponsorlar -> Diğer Sponsorlarımız / Other Sponsors */}
-        {/* Eğer bunu tekrar aktif hale getirecekseniz: */}
-        {/* 
+        
         <p className="text-2xl mb-4">
           {translations.sections.sponsors.otherTitle}
         </p>
@@ -80,7 +79,7 @@ const SponsorSection = () => {
             </div>
           ))}
         </div>
-        */}
+        
       </div>
     </section>
   );
