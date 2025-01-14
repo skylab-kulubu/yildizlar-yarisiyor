@@ -69,7 +69,16 @@
           "followUs": "Bizi Takip Edin",
           "skyLabText": "SKY LAB: Bilgisayar Bilimleri Kulübü WEBLAB ekibi tarafından geliştirilmiştir."
         }
-      }
+      },
+      "eventStatus": {
+          "loading": "Etkinlik bilgileri yükleniyor...",
+          "notFound": "Etkinlik bilgisi alınamadı.",
+          "inactive": "Bu form şu an aktif değil.",
+          "notStarted": "Başvuru formu henüz açılmadı.",
+          "startDateLabel": "Açılış tarihi: ",
+          "ended": "Başvuru formu sona erdi.",
+          "endDateLabel": "Kapanış tarihi: "
+        }
     },
     "en": {
       "header": {
@@ -139,9 +148,18 @@
         },
         "footer": {
           "followUs": "Follow Us",
-          "skyLabText": "Developed by SKY LAB: The WebLab team of the Computer Science Club."
+          "skyLabText": "Developed by SKY LAB: The WEBLAB team of the Computer Science Club."
         }
-      }
+      },
+      "eventStatus": {
+          "loading": "Loading event details...",
+          "notFound": "Event information could not be retrieved.",
+          "inactive": "This form is not active at the moment.",
+          "notStarted": "The application form has not been opened yet.",
+          "startDateLabel": "Opening date: ",
+          "ended": "The application form has ended.",
+          "endDateLabel": "Closing date: "
+        }
     }
   }
   
