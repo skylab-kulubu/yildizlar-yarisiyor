@@ -10,7 +10,7 @@ const SponsorSection = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api.ytumk.com.tr/v1/exapi/sponsors/c7165832-1fad-48bc-9219-dd12e8cd2ec0"
+          "https://api.ytumk.com.tr/v1/exapi/event/c7165832-1fad-48bc-9219-dd12e8cd2ec0/sponsors"
         );
         setSponsors(response.data);
       } catch (error) {

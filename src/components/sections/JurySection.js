@@ -10,7 +10,7 @@ const JurySection = () => {
     const fetchJuries = async () => {
       try {
         const response = await fetch(
-          "https://api.ytumk.com.tr/v1/exapi/juries/c7165832-1fad-48bc-9219-dd12e8cd2ec0"
+          "https://api.ytumk.com.tr/v1/exapi/event/c7165832-1fad-48bc-9219-dd12e8cd2ec0/juries"
         );
         if (!response.ok) {
           throw new Error("Jüri verileri çekilirken hata oluştu.");
