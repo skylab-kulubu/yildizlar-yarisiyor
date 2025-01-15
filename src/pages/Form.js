@@ -495,7 +495,7 @@ const ParticipationForm = () => {
       
   
       <iframe
-        src="https://api.ytumk.com.tr/v1/exapi/policies/c7165832-1fad-48bc-9219-dd12e8cd2ec0"
+        src="https://api.ytumk.com.tr/v1/exapi/event/c7165832-1fad-48bc-9219-dd12e8cd2ec0/policy"
         className="w-full h-[70vh] border rounded"
         title="Şartlar ve Koşullar"
         frameBorder="0"

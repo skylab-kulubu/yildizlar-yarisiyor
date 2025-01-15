@@ -25,7 +25,7 @@ export const postParticipationForm = async (formData) => {
  */
 export const getSponsors = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/sponsors/c7165832-1fad-48bc-9219-dd12e8cd2ec0`);
+    const response = await fetch(`${BASE_URL}/event/c7165832-1fad-48bc-9219-dd12e8cd2ec0/sponsors`);
     if (!response.ok) {
       throw new Error(`Failed to fetch sponsors: ${response.statusText}`);
     }
@@ -42,7 +42,7 @@ export const getSponsors = async () => {
  */
 export const getJuries = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/juries/c7165832-1fad-48bc-9219-dd12e8cd2ec0`);
+    const response = await fetch(`${BASE_URL}/event/c7165832-1fad-48bc-9219-dd12e8cd2ec0/juries`);
     if (!response.ok) {
       throw new Error(`Failed to fetch juries: ${response.statusText}`);
     }
