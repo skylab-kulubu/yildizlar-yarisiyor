@@ -12,7 +12,7 @@ function App() {
       <Router>
         <div className="flex flex-col min-h-screen">
           <Navbar />
-          <main className="flex-grow py-28">
+          <main className="flex-grow py-[4rem]">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/form" element={<Form />} />

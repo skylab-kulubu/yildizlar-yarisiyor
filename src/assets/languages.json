@@ -46,7 +46,11 @@
       "submittingButton": "Gönderiliyor...",
       "namePlaceHolder": "Ad Soyad",
       "instrumentPlaceHolder": "Enstrüman",
-      "chooseUniversity": "Üniversite Seçiniz"
+      "chooseUniversity": "Üniversite Seçiniz",
+      "termCheckboxLabel":"Şartlar ve Koşulları Kabul Ediyorum",
+      "termAcceptButton": "Katılım Koşullarını Okudum ve Onaylıyorum",
+      "termDenyButton":"Reddet",
+      "term":"Şartlar ve Koşullar"
     },
     "sections": {
       "sponsors": {
@@ -127,7 +131,11 @@
       "submittingButton": "Submitting...",
       "namePlaceHolder": "Full Name",
       "instrumentPlaceHolder": "Instrument",
-      "chooseUniversity": "Choose University"
+      "chooseUniversity": "Choose University",
+      "termCheckboxLabel":"I have read and agree to the Terms of Participation",
+      "termAcceptButton": "I have read and agree to the Terms of Participation",
+      "termDenyButton":"Deny",
+      "term":"Terms"
     },
     "sections": {
       "sponsors": {

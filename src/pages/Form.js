@@ -7,6 +7,7 @@ const ParticipationForm = () => {
   const [fileName, setFileName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { translations } = useContext(LanguageContext);
 
@@ -132,7 +133,7 @@ const ParticipationForm = () => {
       if (!response.ok) {
         const errMsg = await response.text();
         console.error("Sunucu hatası:", errMsg);
-        setSubmissionStatus(translations.form.submissionStatusError);
+        setSubmissionStatus(translations.form.submissionStatusError + ": " + response.json());
         return;
       }
       setSubmissionStatus(translations.form.submissionStatusSuccess);
@@ -141,9 +142,13 @@ const ParticipationForm = () => {
       setFileName("");
     } catch (error) {
       console.error("Submission failed:", error);
-      setSubmissionStatus(translations.form.submissionStatusError);
+      setSubmissionStatus(translations.form.submissionStatusError + ": " + error);
     }
     setIsSubmitting(false);
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   if (loadingEvent) {
@@ -453,17 +458,75 @@ const ParticipationForm = () => {
           </div>
         </div>
         <div className="mb-2">
-          <label className="inline-flex items-center">
-            <input
-              type="checkbox"
-              name="termsAccepted"
-              checked={formData.termsAccepted}
-              onChange={handleCheckboxChange}
-              className="form-checkbox h-5 w-5 text-dark-accentpurple dark:bg-form-input-dark"
-              required
-            />
-            <span className="ml-2">{translations.form.termsAcceptedLabel}</span>
-          </label>
+        <div className="mb-2">
+        <label className="inline-flex items-center"/>
+        <div>
+        <input
+      type="checkbox"
+      name="termsAccepted"
+      checked={formData.termsAccepted}
+      onChange={handleCheckboxChange}
+      className="form-checkbox h-5 w-5 text-dark-accentpurple dark:bg-form-input-dark"
+      required
+    />
+    <span
+      onClick={toggleModal}
+      className="ml-2 cursor-pointer text-blue-500 underline hover:text-blue-700"
+    >
+      {translations.form.termCheckboxLabel}
+      <span className="text-form-red">*</span>
+    </span>
+        </div>
+</div>
+
+{isModalOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl relative">
+
+      <button
+        onClick={toggleModal}
+        className="absolute top-2 right-2 text-black text-3xl font-bold"
+      >
+        &times;
+      </button>
+      
+  
+      <h3 className="text-xl font-semibold mb-4 text-black">{translations.form.term}</h3>
+      
+  
+      <iframe
+        src="https://api.ytumk.com.tr/v1/exapi/policies/c7165832-1fad-48bc-9219-dd12e8cd2ec0"
+        className="w-full h-[70vh] border rounded"
+        title="Şartlar ve Koşullar"
+        frameBorder="0"
+      ></iframe>
+
+      <div className="mt-6 flex justify-center space-x-4">
+   
+        <button
+          onClick={() => {
+            setFormData((prev) => ({ ...prev, termsAccepted: true }));
+            toggleModal();
+          }}
+          className="bg-dark-accentpurple text-white px-6 py-2 rounded hover:opacity-80 transition"
+        >
+          {translations.form.termAcceptButton}
+        </button>
+
+        <button
+          onClick={() => {
+            setFormData((prev) => ({ ...prev, termsAccepted: false }));
+            toggleModal();
+          }}
+          className="bg-red-500 text-white px-6 py-2 rounded hover:opacity-80 transition"
+        >
+          {translations.form.termDenyButton}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
         </div>
         <div className="flex justify-center">
           <button
