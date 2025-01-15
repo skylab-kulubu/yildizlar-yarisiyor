@@ -8,3 +8,7 @@ body {
   @apply bg-light-bgcolor dark:bg-dark-bgcolor text-light-black dark:text-dark-white;
   font-family: 'Outfit', sans-serif;
 }
+
+html {
+  scroll-padding-top: 5rem; /* Navbar yüksekliğiniz kadar */
+}
