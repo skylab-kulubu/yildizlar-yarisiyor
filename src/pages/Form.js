@@ -207,7 +207,7 @@ const ParticipationForm = () => {
 
   return (
     <div className="dark:bg-dark-bgcolor dark:text-form-text-dark min-h-screen px-4 py-8 flex flex-col items-center">
-      <h2 className="mb-4 font-semibold text-base md:text-lg">
+      <h2 className="mb-4 mt-10 font-semibold text-base md:text-lg">
         {translations.form.categoryPrompt}
       </h2>
       <div className="mb-6 flex space-x-4">
