@@ -5,7 +5,8 @@
       "categories": "Kategoriler",
       "jury": "Jüri Üyeleri",
       "sponsors": "Sponsorlarımız",
-      "form": "Katılım Formu"
+      "form": "Katılım Formu",
+      "faq": "SSS"
     },
     "hero": {
       "title": "Yıldızlar Yarışıyor ‘25",
@@ -47,10 +48,10 @@
       "namePlaceHolder": "Ad Soyad",
       "instrumentPlaceHolder": "Enstrüman",
       "chooseUniversity": "Üniversite Seçiniz",
-      "termCheckboxLabel":"Şartlar ve Koşulları Kabul Ediyorum",
+      "termCheckboxLabel": "Şartlar ve Koşulları Kabul Ediyorum",
       "termAcceptButton": "Katılım Koşullarını Okudum ve Onaylıyorum",
-      "termDenyButton":"Reddet",
-      "term":"Şartlar ve Koşullar"
+      "termDenyButton": "Reddet",
+      "term": "Şartlar ve Koşullar"
     },
     "sections": {
       "sponsors": {
@@ -72,6 +73,9 @@
       "footer": {
         "followUs": "Bizi Takip Edin",
         "skyLabText": "SKY LAB: Bilgisayar Bilimleri Kulübü WEBLAB ekibi tarafından geliştirilmiştir."
+      },
+      "faq": {
+        "title": "Sıkça Sorulan Sorular"
       }
     },
     "eventStatus": {
@@ -90,7 +94,8 @@
       "categories": "Categories",
       "jury": "Jury Members",
       "sponsors": "Our Sponsors",
-      "form": "Participation Form"
+      "form": "Participation Form",
+      "faq": "FAQ"
     },
     "hero": {
       "title": "Yıldızlar Yarışıyor ‘25",
@@ -132,10 +137,10 @@
       "namePlaceHolder": "Full Name",
       "instrumentPlaceHolder": "Instrument",
       "chooseUniversity": "Choose University",
-      "termCheckboxLabel":"I have read and agree to the Terms of Participation",
+      "termCheckboxLabel": "I have read and agree to the Terms of Participation",
       "termAcceptButton": "I have read and agree to the Terms of Participation",
-      "termDenyButton":"Deny",
-      "term":"Terms"
+      "termDenyButton": "Deny",
+      "term": "Terms"
     },
     "sections": {
       "sponsors": {
@@ -157,6 +162,9 @@
       "footer": {
         "followUs": "Follow Us",
         "skyLabText": "Developed by SKY LAB: The WEBLAB team of the Computer Science Club."
+      },
+      "faq": {
+        "title": "Frequently Asked Questions"
       }
     },
     "eventStatus": {
@@ -170,4 +178,3 @@
     }
   }
 }
-  

@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { LanguageContext } from "../../assets/LanguageContext";
+import Ripple from "material-ripple-effects";
 
 const SponsorSection = () => {
   const [sponsors, setSponsors] = useState([]);
   const { translations } = useContext(LanguageContext); // <-- Çeviri context
+  const ripple = new Ripple();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,21 +47,21 @@ const SponsorSection = () => {
           {mainSponsors.map((sponsor) => (
             <div
               key={sponsor.id}
-              className="text-center cursor-pointer"
+              className="text-center cursor-pointer relative overflow-hidden rounded-full"
               onClick={() => handleSponsorClick(sponsor.website_url)}
+              onMouseDown={(e) => ripple.create(e, "light")}
             >
               <img
                 src={sponsor.image_url}
                 alt={sponsor.name}
                 className="w-36 h-36 mx-auto mb-4 bg-black object-contain rounded-full border-2 border-gray-300"
               />
-              <p className="text-lg font-semibold">{sponsor.name}</p>
             </div>
           ))}
         </div>
 
         {/* Diğer Sponsorlar -> Diğer Sponsorlarımız / Other Sponsors */}
-        
+
         <p className="text-2xl mb-4">
           {translations.sections.sponsors.otherTitle}
         </p>
@@ -69,6 +71,7 @@ const SponsorSection = () => {
               key={sponsor.id}
               className="text-center cursor-pointer"
               onClick={() => handleSponsorClick(sponsor.website_url)}
+              onMouseDown={(e) => ripple.create(e, "light")}
             >
               <img
                 src={sponsor.image_url}
@@ -79,7 +82,6 @@ const SponsorSection = () => {
             </div>
           ))}
         </div>
-        
       </div>
     </section>
   );
