@@ -60,23 +60,24 @@ const FAQ = () => {
                     {faqs.map((faq, index) => (
                         <div key={faq.id} className="dark:bg-dark-bgcolor shadow-lg">
                             <button
-                                className="flex justify-between items-center w-full text-light-black dark:text-dark-white font-semibold text-lg p-4"
+                                className="flex justify-start items-center w-full text-light-black dark:text-dark-white font-semibold text-lg p-4 gap-2"
                                 onClick={() => toggleFAQ(index)}
                             >
-                                {faq.question}
+                                <span className="flex-1 text-left">{faq.question}</span>
                                 {openIndex === index ? (
-                                    <ChevronUp className="text-light-black dark:text-dark-white" />
+                                    <ChevronUp className="text-light-black dark:text-dark-white"/>
                                 ) : (
-                                    <ChevronDown className="text-light-black dark:text-dark-white" />
+                                    <ChevronDown className="text-light-black dark:text-dark-white"/>
                                 )}
                             </button>
+
                             <motion.div
-                                initial={{ height: 0, opacity: 0 }}
+                                initial={{height: 0, opacity: 0}}
                                 animate={{
                                     height: openIndex === index ? "auto" : 0,
                                     opacity: openIndex === index ? 1 : 0,
                                 }}
-                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                transition={{duration: 0.3, ease: "easeInOut"}}
                                 className="overflow-hidden"
                             >
                                 <div className="p-4 text-light-black dark:text-dark-white">
